@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ *
+ * Inboxed — warm & human design tokens
+ * ------------------------------------------------------------------ */
+:root {
+  --cream: #faf6ef;
+  --cream-deep: #f4ecdf;
+  --paper: #fffdf9;
+  --ink: #241f18;
+  --ink-soft: #4a4137;
+  --muted: #8c8172;
+  --line: #e9dfce;
+
+  --coral: #f0603a;
+  --coral-deep: #d94a26;
+  --coral-soft: #ffe9e1;
+  --amber: #f4a52b;
+  --green: #2fa46a;
+  --green-soft: #e2f4ea;
+  --danger: #e24d34;
+  --danger-soft: #fde3dc;
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+
+  --color-coral: var(--coral);
+  --color-coral-deep: var(--coral-deep);
+  --color-coral-soft: var(--coral-soft);
+  --color-amber: var(--amber);
+  --color-green: var(--green);
+  --color-green-soft: var(--green-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.75rem;
+}
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Subtle warm paper grain via layered radial gradients */
+.bg-grain {
+  background-image:
+    radial-gradient(60rem 60rem at 85% -10%, rgba(244, 165, 43, 0.08), transparent 60%),
+    radial-gradient(50rem 50rem at 0% 10%, rgba(240, 96, 58, 0.06), transparent 55%);
+}
+
+.font-display {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+/* Soft, warm elevation */
+.shadow-soft {
+  box-shadow:
+    0 1px 2px rgba(36, 31, 24, 0.04),
+    0 8px 24px rgba(36, 31, 24, 0.06),
+    0 24px 48px -24px rgba(36, 31, 24, 0.12);
+}
+
+.shadow-lift {
+  box-shadow:
+    0 2px 4px rgba(36, 31, 24, 0.05),
+    0 18px 40px -12px rgba(36, 31, 24, 0.14);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
