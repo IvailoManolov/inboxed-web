@@ -202,9 +202,9 @@ export default function Gauntlet() {
           </span>
         </div>
 
-        {/* score badge */}
+        {/* score badge — fixed size so swapping states never resizes the pill */}
         <div
-          className="flex items-center gap-2 rounded-full px-3 py-1.5 transition-colors duration-500"
+          className="relative flex h-9 w-[140px] items-center justify-center rounded-full transition-colors duration-500"
           style={{ background: score === 0 ? "var(--cream-deep)" : band.soft }}
         >
           <AnimatePresence mode="wait">
@@ -214,7 +214,8 @@ export default function Gauntlet() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="flex items-center gap-1.5 text-sm font-semibold text-ink-soft"
+                transition={{ duration: 0.2 }}
+                className="absolute inset-0 flex items-center justify-center gap-1.5 text-sm font-semibold text-ink-soft"
               >
                 <Loader2 className="h-4 w-4 animate-spin" />
                 Analyzing…
@@ -225,7 +226,8 @@ export default function Gauntlet() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="flex items-center gap-2"
+                transition={{ duration: 0.2 }}
+                className="absolute inset-0 flex items-center justify-center gap-2"
               >
                 <span className="font-mono text-lg font-bold text-muted">—</span>
                 <span className="text-xs font-semibold uppercase tracking-wide text-muted">
@@ -235,10 +237,11 @@ export default function Gauntlet() {
             ) : (
               <motion.span
                 key="score"
-                initial={{ opacity: 0, y: 4 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -4 }}
-                className="flex items-center gap-2"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="absolute inset-0 flex items-center justify-center gap-2"
               >
                 <span
                   className="font-mono text-lg font-bold tabular-nums"
@@ -360,9 +363,9 @@ export default function Gauntlet() {
               <AnimatePresence>
                 {isBad && isActive && (
                   <motion.span
-                    initial={{ opacity: 0, y: 6, scale: 0.8 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 4 }}
                     className="absolute bottom-full left-1/2 mb-3 -translate-x-1/2 whitespace-nowrap rounded-lg bg-danger px-2 py-1 font-mono text-xs font-bold text-paper shadow-lift"
                   >
                     {score} spam

@@ -2,12 +2,18 @@ import type { Metadata } from "next";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
-import { ArrowLeft, ArrowRight, Inbox, AlertTriangle } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Inbox,
+  AlertTriangle,
+  ExternalLink,
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "The data — why so many emails end up in spam | Inboxed",
   description:
-    "Real, cited statistics on email deliverability: how many emails never reach the inbox, how much of all email is spam, and what actually trips filters.",
+    "Real, cited statistics on email deliverability, each linked to its primary source: how many emails never reach the inbox, how much of all email is spam, and what actually trips filters.",
 };
 
 const HEADLINE_STATS = [
@@ -15,29 +21,33 @@ const HEADLINE_STATS = [
     big: "~1 in 6",
     label: "emails never reaches the inbox",
     detail:
-      "Average inbox-placement rates sit around 83–85% globally — meaning roughly one in six legitimate emails lands in spam or vanishes.",
-    source: "Validity / Return Path Deliverability Benchmark",
+      "Across 2024–25, average inbox placement sat around 84% globally — so roughly one in six legitimate emails is filtered to spam or quietly disappears.",
+    source: "Validity · 2025 Deliverability Benchmark",
+    href: "https://www.validity.com/resource-center/2025-email-deliverability-benchmark-report/",
   },
   {
-    big: "45%+",
-    label: "of all email sent is spam",
+    big: "47%",
+    label: "of all email is spam",
     detail:
-      "Nearly half of global email traffic is spam — which is exactly why providers filter so aggressively, and why real senders get caught in the net.",
-    source: "Statista / Kaspersky, 2023",
+      "Nearly half of global email traffic in 2024 was spam. That’s exactly why providers filter so aggressively — and why real senders keep getting caught in the net.",
+    source: "Statista · Spam share of email traffic",
+    href: "https://www.statista.com/statistics/420391/spam-email-traffic-share/",
   },
   {
-    big: "~1 in 5",
-    label: "marketing emails goes missing or to spam",
+    big: "0.3%",
+    label: "spam complaints can sink your domain",
     detail:
-      "Independent deliverability tests repeatedly find 15–20% of commercial emails never make it to the inbox across major providers.",
-    source: "EmailTooltester deliverability studies",
+      "Gmail’s own rules: if more than 3 in 1,000 recipients hit “report spam,” your future emails get far more likely to be filtered — for everyone on your domain. Aim under 0.1%.",
+    source: "Google · Email sender guidelines",
+    href: "https://support.google.com/mail/answer/14229414",
   },
   {
-    big: "0.10%",
-    label: "spam complaints can hurt your reputation",
+    big: "75.6%",
+    label: "inbox rate at the toughest provider",
     detail:
-      "Google advises keeping your spam-complaint rate below 0.10%. Cross it and your future emails are far more likely to be filtered — for everyone on your domain.",
-    source: "Google Postmaster Tools guidance",
+      "At Microsoft / Outlook, only about three-quarters of legitimate email reaches the inbox — so even senders doing everything right lose a chunk of their outreach.",
+    source: "Validity · 2025 Deliverability Benchmark",
+    href: "https://www.validity.com/resource-center/2025-email-deliverability-benchmark-report/",
   },
 ];
 
@@ -48,6 +58,29 @@ const TRIGGERS = [
   "Missing unsubscribe link or physical address (CAN-SPAM)",
   "Poor HTML-to-text balance and image-heavy messages",
   "Low sender reputation from past complaints or bounces",
+];
+
+const SOURCES = [
+  {
+    name: "Validity — 2025 Email Deliverability Benchmark Report",
+    note: "Global and provider-level inbox-placement rates.",
+    href: "https://www.validity.com/resource-center/2025-email-deliverability-benchmark-report/",
+  },
+  {
+    name: "Statista — Spam share of global email traffic",
+    note: "Spam as a percentage of all email sent, tracked monthly.",
+    href: "https://www.statista.com/statistics/420391/spam-email-traffic-share/",
+  },
+  {
+    name: "Google — Email sender guidelines",
+    note: "Official spam-complaint thresholds for reaching Gmail inboxes.",
+    href: "https://support.google.com/mail/answer/14229414",
+  },
+  {
+    name: "EmailTooltester — Deliverability & spam studies",
+    note: "Independent, repeated inbox-placement tests across providers.",
+    href: "https://www.emailtooltester.com/en/blog/spam-statistics/",
+  },
 ];
 
 export default function StatsPage() {
@@ -71,9 +104,9 @@ export default function StatsPage() {
               A lot of good email never gets read.
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-ink-soft">
-              We think you deserve the real numbers before you trust a tool with
-              your outreach. Here’s what the industry’s own deliverability
-              research shows — with sources, so you can check us.
+              We won’t ask you to take our word for it. Every number below links
+              straight to its primary source — tap any card and check it
+              yourself.
             </p>
           </div>
         </section>
@@ -83,7 +116,12 @@ export default function StatsPage() {
           <div className="grid gap-6 sm:grid-cols-2">
             {HEADLINE_STATS.map((s, i) => (
               <Reveal key={s.label} delay={i * 0.08}>
-                <div className="flex h-full flex-col rounded-[var(--radius-2xl)] border border-line bg-paper p-8 shadow-soft">
+                <a
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex h-full flex-col rounded-[var(--radius-2xl)] border border-line bg-paper p-8 shadow-soft transition-transform hover:-translate-y-1"
+                >
                   <div className="font-display text-6xl font-extrabold leading-none text-coral">
                     {s.big}
                   </div>
@@ -93,10 +131,11 @@ export default function StatsPage() {
                   <p className="mt-3 flex-1 text-base leading-relaxed text-ink-soft">
                     {s.detail}
                   </p>
-                  <p className="mt-5 border-t border-line pt-4 text-xs font-medium uppercase tracking-wide text-muted">
+                  <span className="mt-5 flex items-center gap-1.5 border-t border-line pt-4 text-xs font-medium uppercase tracking-wide text-muted transition-colors group-hover:text-coral">
+                    <ExternalLink className="h-3.5 w-3.5" />
                     Source · {s.source}
-                  </p>
-                </div>
+                  </span>
+                </a>
               </Reveal>
             ))}
           </div>
@@ -152,35 +191,37 @@ export default function StatsPage() {
         <section className="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-20">
           <Reveal>
             <h2 className="font-display text-2xl font-bold text-ink">
-              Where these numbers come from
+              Check our sources
             </h2>
             <p className="mt-3 text-base leading-relaxed text-ink-soft">
               Deliverability figures vary by study, year, industry, and mailbox
               provider — anyone quoting a single “exact” number is guessing. We
-              round conservatively and point you to the primary research so you
-              can judge for yourself:
+              round conservatively and link the primary research so you can judge
+              for yourself:
             </p>
-            <ul className="mt-5 space-y-3">
-              {[
-                "Validity (Return Path) — annual Email Deliverability Benchmark reports on global inbox-placement rates.",
-                "Statista & Kaspersky — global spam share of total email traffic.",
-                "EmailTooltester — independent, repeated deliverability tests across major providers.",
-                "Google Postmaster Tools — official sender guidance on spam-complaint thresholds.",
-                "The Radicati Group — email volume and usage statistics.",
-              ].map((src) => (
-                <li
-                  key={src}
-                  className="flex gap-2.5 text-base leading-relaxed text-ink-soft"
+            <div className="mt-6 space-y-3">
+              {SOURCES.map((src) => (
+                <a
+                  key={src.name}
+                  href={src.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-start gap-3 rounded-xl border border-line bg-paper p-4 shadow-soft transition-transform hover:-translate-y-0.5"
                 >
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-muted" />
-                  <span>{src}</span>
-                </li>
+                  <ExternalLink className="mt-0.5 h-4 w-4 shrink-0 text-muted transition-colors group-hover:text-coral" />
+                  <span>
+                    <span className="block text-base font-semibold text-ink transition-colors group-hover:text-coral">
+                      {src.name}
+                    </span>
+                    <span className="block text-sm text-muted">{src.note}</span>
+                  </span>
+                </a>
               ))}
-            </ul>
+            </div>
             <p className="mt-6 text-sm leading-relaxed text-muted">
-              Inboxed isn’t affiliated with any of these organizations. If you
-              spot a figure you think is off, tell us at hello@inboxed.app and
-              we’ll correct it.
+              Inboxed isn’t affiliated with any of these organizations. Spot a
+              figure you think is off? Tell us at hello@inboxed.app and we’ll
+              correct it.
             </p>
           </Reveal>
 

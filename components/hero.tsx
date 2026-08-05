@@ -7,7 +7,7 @@ import Gauntlet from "./gauntlet";
 export function Hero() {
   return (
     <section id="top" className="bg-grain relative overflow-hidden">
-      <div className="mx-auto max-w-6xl px-5 pb-16 pt-14 sm:px-8 sm:pb-24 sm:pt-20">
+      <div className="mx-auto max-w-6xl px-5 pb-12 pt-8 sm:px-8 sm:pb-16 sm:pt-10">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -19,7 +19,7 @@ export function Hero() {
             No AI guesswork — just the rules spam filters actually use
           </span>
 
-          <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-ink sm:text-6xl">
+          <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-ink sm:text-6xl">
             Your best cold email is
             <br className="hidden sm:block" />{" "}
             <span className="relative whitespace-nowrap text-coral">
@@ -43,13 +43,13 @@ export function Hero() {
             </span>
           </h1>
 
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">
+          <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-ink-soft">
             Inboxed checks every email before you hit send, flags exactly what
             trips spam filters, and shows you the one-click fix. Land in the
             inbox — not the folder no one opens.
           </p>
 
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href="#try"
               className="group inline-flex items-center gap-2 rounded-full bg-coral px-6 py-3 text-base font-semibold text-paper shadow-lift transition-transform hover:-translate-y-0.5 hover:bg-coral-deep"
@@ -80,7 +80,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mt-14 max-w-3xl"
+          className="mx-auto mt-10 max-w-3xl"
         >
           <Gauntlet />
         </motion.div>
