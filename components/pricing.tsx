@@ -1,11 +1,23 @@
 import { Reveal } from "./reveal";
 import { Check } from "lucide-react";
 
-const TIERS = [
+const TIERS: {
+  name: string;
+  price: string;
+  original: string | null;
+  cadence: string;
+  note: string | null;
+  tagline: string;
+  features: string[];
+  cta: string;
+  highlight: boolean;
+}[] = [
   {
     name: "Free",
     price: "$0",
+    original: null,
     cadence: "forever",
+    note: null,
     tagline: "See what a filter sees.",
     features: [
       "Web checker — score any email",
@@ -17,8 +29,10 @@ const TIERS = [
   },
   {
     name: "Pro",
-    price: "$19",
+    price: "$9.99",
+    original: "$19.99",
     cadence: "/ month",
+    note: "Launch price — until the end of 2026",
     tagline: "The Gmail sidekick you'll actually keep.",
     features: [
       "Real-time checks inside Gmail",
@@ -32,7 +46,9 @@ const TIERS = [
   {
     name: "Team",
     price: "$15",
+    original: null,
     cadence: "/ seat / mo",
+    note: null,
     tagline: "For agencies sending at scale.",
     features: [
       "Everything in Pro",
@@ -84,7 +100,16 @@ export function Pricing() {
               >
                 {t.tagline}
               </p>
-              <div className="mt-6 flex items-baseline gap-1">
+              <div className="mt-6 flex items-baseline gap-2">
+                {t.original && (
+                  <span
+                    className={`font-display text-2xl font-bold line-through ${
+                      t.highlight ? "text-cream/40" : "text-muted/60"
+                    }`}
+                  >
+                    {t.original}
+                  </span>
+                )}
                 <span className="font-display text-4xl font-extrabold">
                   {t.price}
                 </span>
@@ -96,6 +121,17 @@ export function Pricing() {
                   {t.cadence}
                 </span>
               </div>
+              {t.note && (
+                <p
+                  className={`mt-2 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ${
+                    t.highlight
+                      ? "bg-coral/20 text-coral"
+                      : "bg-coral-soft text-coral-deep"
+                  }`}
+                >
+                  🎉 {t.note}
+                </p>
+              )}
 
               <ul className="mt-6 space-y-3">
                 {t.features.map((f) => (
