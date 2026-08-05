@@ -183,9 +183,14 @@ export function LiveDemo() {
             {/* results side */}
             <div className="relative p-7">
               <div className="mb-5 flex items-center justify-between">
-                <span className="text-xs font-medium uppercase tracking-widest text-muted">
-                  Result
-                </span>
+                <div>
+                  <span className="text-xs font-medium uppercase tracking-widest text-muted">
+                    Result
+                  </span>
+                  <p className="mt-0.5 text-[11px] text-muted">
+                    0–100 · lower is better
+                  </p>
+                </div>
                 <div
                   className="flex items-center gap-2 rounded-full px-3 py-1.5 transition-colors duration-500"
                   style={{ background: scanned ? b.soft : "var(--cream-deep)" }}
