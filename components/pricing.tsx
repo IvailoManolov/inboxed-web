@@ -10,7 +10,7 @@ const TIERS = [
     features: [
       "Web checker — score any email",
       "Line-by-line spam findings",
-      "3 checks / day",
+      "1 check / day",
     ],
     cta: "Start free",
     highlight: false,
