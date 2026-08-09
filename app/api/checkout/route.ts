@@ -5,7 +5,8 @@ import { stripe } from "@/lib/stripe";
 import { APP_URL, serverEnv } from "@/lib/config";
 
 /* Creates a Stripe Checkout session for the signed-in user and returns its URL.
- * Reuses an existing Stripe customer if we've seen this user before. */
+ * The Stripe customer id is stashed on the user's app_metadata (service-role
+ * only, tamper-proof) so the entitlement route can find it later — no DB. */
 
 export const runtime = "nodejs";
 
@@ -16,23 +17,22 @@ export async function POST(req: NextRequest) {
   } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ error: "Not signed in" }, { status: 401 });
 
-  const extId = (await req.json().catch(() => ({})))?.extId as string | undefined;
+  const body = (await req.json().catch(() => ({}))) as { extId?: string };
+  const extId = body.extId;
 
-  // Reuse the Stripe customer if this user already has a subscription row.
-  const admin = createSupabaseAdminClient();
-  const { data: existing } = await admin
-    .from("subscriptions")
-    .select("stripe_customer_id")
-    .eq("user_id", user.id)
-    .maybeSingle();
-
-  let customerId = existing?.stripe_customer_id;
+  // Reuse the Stripe customer if we've seen this user before; otherwise create
+  // one and remember it on the auth user.
+  let customerId = user.app_metadata?.stripe_customer_id as string | undefined;
   if (!customerId) {
     const customer = await stripe().customers.create({
       email: user.email ?? undefined,
-      metadata: { user_id: user.id },
+      metadata: { supabase_user_id: user.id },
     });
     customerId = customer.id;
+    const admin = createSupabaseAdminClient();
+    await admin.auth.admin.updateUserById(user.id, {
+      app_metadata: { ...user.app_metadata, stripe_customer_id: customerId },
+    });
   }
 
   const successUrl =
@@ -44,9 +44,6 @@ export async function POST(req: NextRequest) {
     customer: customerId,
     line_items: [{ price: serverEnv.stripePriceId(), quantity: 1 }],
     client_reference_id: user.id,
-    // Stamp user_id everywhere the webhook might read it.
-    metadata: { user_id: user.id },
-    subscription_data: { metadata: { user_id: user.id } },
     success_url: successUrl,
     cancel_url: `${APP_URL}/upgrade?canceled=1`,
     allow_promotion_codes: true,

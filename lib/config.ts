@@ -25,6 +25,5 @@ function required(name: string): string {
 export const serverEnv = {
   supabaseServiceRoleKey: () => required("SUPABASE_SERVICE_ROLE_KEY"),
   stripeSecretKey: () => required("STRIPE_SECRET_KEY"),
-  stripeWebhookSecret: () => required("STRIPE_WEBHOOK_SECRET"),
   stripePriceId: () => required("STRIPE_PRICE_ID"),
 };

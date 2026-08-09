@@ -1,11 +1,10 @@
 import { NextResponse } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { stripe } from "@/lib/stripe";
 import { APP_URL } from "@/lib/config";
 
 /* Returns a Stripe Customer Portal URL so a Pro user can manage or cancel
- * their subscription. */
+ * their subscription. Customer id comes from the auth user's app_metadata. */
 
 export const runtime = "nodejs";
 
@@ -16,19 +15,13 @@ export async function POST() {
   } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ error: "Not signed in" }, { status: 401 });
 
-  const admin = createSupabaseAdminClient();
-  const { data: row } = await admin
-    .from("subscriptions")
-    .select("stripe_customer_id")
-    .eq("user_id", user.id)
-    .maybeSingle();
-
-  if (!row?.stripe_customer_id) {
+  const customerId = user.app_metadata?.stripe_customer_id as string | undefined;
+  if (!customerId) {
     return NextResponse.json({ error: "No subscription found" }, { status: 404 });
   }
 
   const session = await stripe().billingPortal.sessions.create({
-    customer: row.stripe_customer_id,
+    customer: customerId,
     return_url: `${APP_URL}/account`,
   });
 

@@ -1,56 +1,36 @@
-/* Pure mapping + entitlement logic. No Stripe/Supabase SDK imports here so it
- * stays trivially unit-testable. The route handlers do the I/O and call in. */
+/* Pure entitlement logic, derived straight from Stripe subscriptions. Stripe is
+ * the source of truth — there is no local subscriptions table. The route handler
+ * does the Stripe I/O and calls in here so the decision stays unit-testable. */
 
-/** The shape we persist in public.subscriptions. */
-export interface SubscriptionRow {
-  user_id: string;
-  stripe_customer_id: string;
-  stripe_subscription_id: string;
-  plan: string;
-  status: string;
-  current_period_end: string; // ISO
-  updated_at: string; // ISO
-}
-
-/** The minimal slice of a Stripe Subscription we depend on. */
-export interface StripeSubShape {
-  id: string;
+/** The minimal slice of a Stripe subscription we need to decide access. */
+export interface StripeSubLite {
   status: string;
   current_period_end: number; // unix seconds
-  customer: string;
-  items?: { data?: Array<{ price?: { nickname?: string | null } }> };
 }
 
-/** Statuses Stripe reports that still grant access. */
+/** Stripe statuses that still grant access. */
 const ACTIVE_STATUSES = new Set(["active", "trialing"]);
 
-/** Build the DB row from a Stripe subscription. `now` is injected for
- * deterministic tests. */
-export function subscriptionRowFromStripe(
-  sub: StripeSubShape,
-  userId: string,
+/**
+ * Decide Pro + the paid-through date from a customer's Stripe subscriptions.
+ * Pro = at least one subscription that is active/trialing AND whose period
+ * hasn't ended. `until` is the furthest-out qualifying period end (so stacked
+ * or renewed subs report the latest coverage).
+ */
+export function proFromSubs(
+  subs: StripeSubLite[],
   now: Date,
-): SubscriptionRow {
-  const plan = sub.items?.data?.[0]?.price?.nickname ?? "monthly";
+): { pro: boolean; until: string | null } {
+  const nowMs = now.getTime();
+  let until: number | null = null;
+  for (const s of subs) {
+    if (!ACTIVE_STATUSES.has(s.status)) continue;
+    const endMs = s.current_period_end * 1000;
+    if (endMs <= nowMs) continue;
+    if (until === null || endMs > until) until = endMs;
+  }
   return {
-    user_id: userId,
-    stripe_customer_id: sub.customer,
-    stripe_subscription_id: sub.id,
-    plan,
-    status: sub.status,
-    current_period_end: new Date(sub.current_period_end * 1000).toISOString(),
-    updated_at: now.toISOString(),
+    pro: until !== null,
+    until: until === null ? null : new Date(until).toISOString(),
   };
-}
-
-/** The single source of truth for "is this user Pro?" — active/trialing AND
- * the paid-through date is still in the future. */
-export function isProFromRow(
-  row: Pick<SubscriptionRow, "status" | "current_period_end"> | null | undefined,
-  now: Date,
-): boolean {
-  if (!row) return false;
-  if (!ACTIVE_STATUSES.has(row.status)) return false;
-  const end = Date.parse(row.current_period_end);
-  return Number.isFinite(end) && end > now.getTime();
 }
