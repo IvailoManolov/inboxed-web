@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { ArrowRight, ShieldCheck, Zap } from "lucide-react";
+import { ArrowRight, ShieldCheck, Zap, Sparkles } from "lucide-react";
 import Gauntlet from "./gauntlet";
 
 export function Hero() {
@@ -66,6 +66,10 @@ export function Hero() {
           </div>
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted">
+            <span className="inline-flex items-center gap-1.5">
+              <Sparkles className="h-4 w-4 text-coral" /> Free for 7 days — no
+              credit card
+            </span>
             <span className="inline-flex items-center gap-1.5">
               <Zap className="h-4 w-4 text-amber" /> Instant, runs as you type
             </span>

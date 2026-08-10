@@ -55,7 +55,8 @@ function UpgradeInner() {
     <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-6 py-16">
       <h1 className="font-display text-3xl font-bold text-ink">Upgrade to Inboxed Pro</h1>
       <p className="mt-3 text-ink-soft">
-        Unlock one-click fixes and the full findings list on every draft — unlimited.
+        Keep the full spam checker after your free trial — score, every flagged
+        phrase, and one-click fixes on every draft.
       </p>
 
       {canceled && (
@@ -70,8 +71,8 @@ function UpgradeInner() {
         </div>
         <ul className="mt-4 space-y-2 text-sm text-ink-soft">
           <li>✓ One-click fixes on every flagged phrase</li>
-          <li>✓ Full findings list (not just the top 5)</li>
-          <li>✓ Unlimited checks — no daily cap</li>
+          <li>✓ The full findings list, not just the top 5</li>
+          <li>✓ Unlimited — no trial expiry</li>
           <li>✓ 100% private — no email content ever leaves your browser</li>
         </ul>
 

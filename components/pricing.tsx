@@ -13,18 +13,19 @@ const TIERS: {
   highlight: boolean;
 }[] = [
   {
-    name: "Free",
+    name: "Free trial",
     price: "$0",
     original: null,
-    cadence: "forever",
+    cadence: "for 7 days",
     note: null,
-    tagline: "See what a filter sees.",
+    tagline: "The full thing, free for a week.",
     features: [
-      "Web checker — score any email",
-      "Line-by-line spam findings",
-      "1 check / day",
+      "Live spam-risk score in Gmail",
+      "Every flagged phrase + finding",
+      "One-click fixes",
+      "No credit card required",
     ],
-    cta: "Start free",
+    cta: "Start 7-day trial",
     highlight: false,
   },
   {
@@ -72,8 +73,8 @@ export function Pricing() {
           One recovered reply pays for a year.
         </h2>
         <p className="mt-4 text-lg leading-relaxed text-ink-soft">
-          Start free. Upgrade when you're tired of guessing why nobody wrote
-          back.
+          Free for 7 days — no card. Keep it for less than one recovered reply a
+          month.
         </p>
       </Reveal>
 
