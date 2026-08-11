@@ -50,12 +50,20 @@ export function Nav() {
           ))}
         </div>
 
-        <a
-          href="/#try"
-          className="rounded-full bg-ink px-4 py-2 text-sm font-semibold text-cream transition-transform hover:-translate-y-0.5 hover:bg-ink-soft"
-        >
-          Check an email
-        </a>
+        <div className="flex items-center gap-4 sm:gap-5">
+          <a
+            href="/account"
+            className="text-sm font-medium text-ink-soft transition-colors hover:text-ink"
+          >
+            Sign in
+          </a>
+          <a
+            href="/#try"
+            className="rounded-full bg-ink px-4 py-2 text-sm font-semibold text-cream transition-transform hover:-translate-y-0.5 hover:bg-ink-soft"
+          >
+            Check an email
+          </a>
+        </div>
       </nav>
     </header>
   );
