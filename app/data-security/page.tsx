@@ -5,9 +5,9 @@ import { Reveal } from "@/components/reveal";
 import { ShieldCheck, MonitorSmartphone, EyeOff, Ban, ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Data & Security — BeSeen",
+  title: "Data & Security — HitSend",
   description:
-    "How BeSeen handles your data. Your emails are analyzed on your device and never sold. Plain-English, no fine print.",
+    "How HitSend handles your data. Your emails are analyzed on your device and never sold. Plain-English, no fine print.",
 };
 
 const PILLARS = [
@@ -24,7 +24,7 @@ const PILLARS = [
   {
     Icon: EyeOff,
     title: "No AI reading your mail",
-    body: "BeSeen uses deterministic rules — the same kind spam filters use — not a large language model. Nothing gets sent off to be “trained on.”",
+    body: "HitSend uses deterministic rules — the same kind spam filters use — not a large language model. Nothing gets sent off to be “trained on.”",
   },
 ];
 
@@ -48,7 +48,7 @@ export default function DataSecurityPage() {
               Your emails stay yours.
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-ink-soft">
-              We built BeSeen so you never have to trade privacy for a better
+              We built HitSend so you never have to trade privacy for a better
               inbox rate. Here’s exactly how your data is handled — in plain
               English.
             </p>
@@ -80,7 +80,7 @@ export default function DataSecurityPage() {
                 Gmail &amp; Google Limited Use
               </h2>
               <p className="mt-3 text-base leading-relaxed text-ink-soft">
-                When you connect the BeSeen extension to Gmail, we only touch the
+                When you connect the HitSend extension to Gmail, we only touch the
                 email you’re actively composing, and only to score it. Our use of
                 data received from Google APIs follows the{" "}
                 <a
@@ -113,7 +113,7 @@ export default function DataSecurityPage() {
               <div className="mt-12 rounded-[var(--radius-xl)] border border-line bg-cream-deep/40 p-6">
                 <p className="text-base leading-relaxed text-ink-soft">
                   Have a security question, or want to report something? Email{" "}
-                  <span className="font-semibold text-ink">hello@beseen.app</span>{" "}
+                  <span className="font-semibold text-ink">hello@hitsend.app</span>{" "}
                   — a real person will answer.
                 </p>
               </div>

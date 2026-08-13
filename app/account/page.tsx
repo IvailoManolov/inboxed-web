@@ -66,7 +66,7 @@ export default function AccountPage() {
         href="/"
         className="mb-8 font-display text-lg font-extrabold tracking-tight text-ink"
       >
-        BeSeen
+        HitSend
       </a>
 
       <div className="w-full max-w-md">
@@ -127,7 +127,7 @@ export default function AccountPage() {
         ) : (
           <div className="mt-8 rounded-[var(--radius-2xl)] border border-line bg-paper p-8 text-center shadow-lift">
             <p className="text-ink-soft">
-              Sign in to manage your BeSeen subscription.
+              Sign in to manage your HitSend subscription.
             </p>
             <button
               onClick={signIn}

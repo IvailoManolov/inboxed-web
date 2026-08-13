@@ -21,11 +21,11 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BeSeen — land in the inbox, not the spam folder",
+  title: "HitSend — land in the inbox, not the spam folder",
   description:
-    "BeSeen checks your cold emails before you send them, flags exactly what trips spam filters, and shows you the one-click fix. Grammarly, but for getting read.",
+    "HitSend checks your cold emails before you send them, flags exactly what trips spam filters, and shows you the one-click fix. Grammarly, but for getting read.",
   openGraph: {
-    title: "BeSeen — land in the inbox, not the spam folder",
+    title: "HitSend — land in the inbox, not the spam folder",
     description:
       "Checks your cold emails before you hit send. Flags what trips spam filters. Shows the fix. No AI, no waiting.",
     type: "website",

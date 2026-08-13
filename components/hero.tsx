@@ -44,7 +44,7 @@ export function Hero() {
           </h1>
 
           <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-ink-soft">
-            BeSeen checks every email before you hit send, flags exactly what
+            HitSend checks every email before you hit send, flags exactly what
             trips spam filters, and shows you the one-click fix. Land in the
             inbox — not the folder no one opens.
           </p>

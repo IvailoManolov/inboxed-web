@@ -6,7 +6,7 @@ import { Reveal } from "./reveal";
 
 /**
  * "It flags spam as you write" — a faithful HTML mock of a Gmail compose with
- * the live BeSeen panel beside it. On scroll-into-view a scan sweeps the
+ * the live HitSend panel beside it. On scroll-into-view a scan sweeps the
  * draft, the risky phrases highlight one-by-one in sync with the findings
  * populating the panel, and the score climbs from green toward amber.
  * Hovering a flag (or a finding row) links the two — mirroring the real
@@ -97,7 +97,7 @@ export function FlagDemo() {
             It flags spam as you write.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-ink-soft">
-            BeSeen reads your draft against the rules real spam filters use and
+            HitSend reads your draft against the rules real spam filters use and
             flags exactly what puts you at risk — live, as you type.{" "}
             <span className="font-semibold text-ink">Hover a flag</span> to spot
             it in the email.
@@ -200,7 +200,7 @@ export function FlagDemo() {
                 </div>
               </div>
 
-              {/* ---- BeSeen panel ---- */}
+              {/* ---- HitSend panel ---- */}
               <div className="bg-cream p-5">
                 <div className="flex items-baseline gap-2">
                   <span
@@ -278,7 +278,7 @@ export function FlagDemo() {
                 <div className="mt-4 flex items-center gap-1.5 border-t border-line pt-3 text-[11px] text-muted">
                   <span>🔒</span>
                   <span>
-                    Runs privately in your browser · <b className="text-ink-soft">BeSeen</b>
+                    Runs privately in your browser · <b className="text-ink-soft">HitSend</b>
                   </span>
                 </div>
               </div>

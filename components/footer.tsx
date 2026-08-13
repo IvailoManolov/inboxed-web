@@ -38,10 +38,10 @@ export function Footer() {
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-coral text-paper">
                 <Mail className="h-[18px] w-[18px]" strokeWidth={2.4} />
               </span>
-              <span className="font-display text-lg font-bold">BeSeen</span>
+              <span className="font-display text-lg font-bold">HitSend</span>
             </div>
             <p className="text-sm text-cream/50">
-              © {new Date().getFullYear()} BeSeen. Land in the inbox, not the
+              © {new Date().getFullYear()} HitSend. Land in the inbox, not the
               folder no one opens.
             </p>
           </div>

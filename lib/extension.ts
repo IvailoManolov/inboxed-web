@@ -1,4 +1,4 @@
-/* Browser-side helpers for talking to the BeSeen extension and reading the
+/* Browser-side helpers for talking to the HitSend extension and reading the
  * signed-in user's Pro status. Both run in the browser only (they touch
  * `window.chrome` and the Supabase browser session). */
 

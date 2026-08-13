@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "The data — why so many emails end up in spam | BeSeen",
+  title: "The data — why so many emails end up in spam | HitSend",
   description:
     "Real, cited statistics on email deliverability, each linked to its primary source: how many emails never reach the inbox, how much of all email is spam, and what actually trips filters.",
 };
@@ -219,8 +219,8 @@ export default function StatsPage() {
               ))}
             </div>
             <p className="mt-6 text-sm leading-relaxed text-muted">
-              BeSeen isn’t affiliated with any of these organizations. Spot a
-              figure you think is off? Tell us at hello@beseen.app and we’ll
+              HitSend isn’t affiliated with any of these organizations. Spot a
+              figure you think is off? Tell us at hello@hitsend.app and we’ll
               correct it.
             </p>
           </Reveal>

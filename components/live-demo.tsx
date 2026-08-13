@@ -268,7 +268,7 @@ export function LiveDemo() {
                       <Lock className="h-4 w-4" /> One-click fixes ready
                     </div>
                     <p className="mt-1 text-sm text-ink-soft">
-                      BeSeen can rewrite every issue and lift this to{" "}
+                      HitSend can rewrite every issue and lift this to{" "}
                       <span className="font-semibold text-green">green</span>{" "}
                       instantly.
                     </p>

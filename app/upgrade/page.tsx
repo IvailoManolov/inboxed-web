@@ -68,13 +68,13 @@ function UpgradeInner() {
         href="/"
         className="mb-8 font-display text-lg font-extrabold tracking-tight text-ink"
       >
-        BeSeen
+        HitSend
       </a>
 
       <div className="w-full max-w-md">
         <div className="text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-line bg-paper px-3 py-1.5 text-xs font-semibold text-coral-deep shadow-soft">
-            <Sparkles className="h-3.5 w-3.5" /> BeSeen Pro
+            <Sparkles className="h-3.5 w-3.5" /> HitSend Pro
           </span>
           <h1 className="mt-4 font-display text-3xl font-extrabold leading-tight tracking-tight text-ink">
             {pro ? "You're already Pro 🎉" : "Keep the full spam checker"}
@@ -156,7 +156,7 @@ function UpgradeInner() {
                     </button>
                     {connectState === "unavailable" && (
                       <p className="mt-3 text-center text-xs text-ink-soft">
-                        Couldn&apos;t reach the extension. Make sure BeSeen is
+                        Couldn&apos;t reach the extension. Make sure HitSend is
                         installed in this browser, then try again.
                       </p>
                     )}
