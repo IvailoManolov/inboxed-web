@@ -56,20 +56,10 @@ function UpgradeInner() {
     });
   }
 
-  async function checkout() {
+  function checkout() {
+    // Our own branded checkout page (Payment Element) — no hosted Stripe page.
     setBusy(true);
-    try {
-      const res = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ extId }),
-      });
-      const { url } = (await res.json()) as { url?: string };
-      if (url) window.location.href = url;
-      else setBusy(false);
-    } catch {
-      setBusy(false);
-    }
+    window.location.href = `/checkout${extId ? `?ext_id=${encodeURIComponent(extId)}` : ""}`;
   }
 
   return (

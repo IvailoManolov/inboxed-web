@@ -14,6 +14,11 @@ export const SUPABASE_ANON_KEY =
 /** Display-only price label shown on the upgrade page. */
 export const PRICE_LABEL = process.env.NEXT_PUBLIC_PRICE_LABEL ?? "$9/mo";
 
+/** Stripe publishable key — safe in the browser; used by the custom checkout
+ * (Payment Element) to tokenize the card client-side. */
+export const STRIPE_PUBLISHABLE_KEY =
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? "pk_test_PLACEHOLDER";
+
 /** Server-only secrets. Throwing here surfaces a missing env immediately
  * instead of failing deep inside Stripe/Supabase. */
 function required(name: string): string {
