@@ -10,6 +10,7 @@ const TIERS: {
   tagline: string;
   features: string[];
   cta: string;
+  href: string;
   highlight: boolean;
 }[] = [
   {
@@ -26,6 +27,7 @@ const TIERS: {
       "No credit card required",
     ],
     cta: "Start 7-day trial",
+    href: "/upgrade",
     highlight: false,
   },
   {
@@ -42,6 +44,7 @@ const TIERS: {
       "Subject-line suggestions",
     ],
     cta: "Get Pro",
+    href: "/upgrade",
     highlight: true,
   },
   {
@@ -58,6 +61,7 @@ const TIERS: {
       "Priority support",
     ],
     cta: "Talk to us",
+    href: "/contact",
     highlight: false,
   },
 ];
@@ -151,7 +155,7 @@ export function Pricing() {
               </ul>
 
               <a
-                href="#try"
+                href={t.href}
                 className={`mt-8 inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition-transform hover:-translate-y-0.5 ${
                   t.highlight
                     ? "bg-coral text-paper hover:bg-coral-deep"
@@ -177,7 +181,7 @@ export function Pricing() {
             </p>
           </div>
           <a
-            href="#try"
+            href="/upgrade"
             className="shrink-0 rounded-full bg-ink px-5 py-3 text-sm font-semibold text-cream transition-transform hover:-translate-y-0.5"
           >
             Claim lifetime access

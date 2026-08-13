@@ -354,8 +354,10 @@ export default function Gauntlet() {
                 </AnimatePresence>
               </motion.div>
 
-              {/* label pinned below the circle (doesn't shift centering) */}
-              <span className="absolute left-1/2 top-full mt-3 -translate-x-1/2 whitespace-nowrap text-[11px] font-medium text-muted sm:text-xs">
+              {/* label pinned below the circle (doesn't shift centering).
+                  Hidden on phones — the fixed-position labels overlap on
+                  narrow screens, so mobile shows the animation only. */}
+              <span className="absolute left-1/2 top-full mt-3 hidden -translate-x-1/2 whitespace-nowrap text-[11px] font-medium text-muted sm:block sm:text-xs">
                 {gate.label}
               </span>
 
@@ -366,7 +368,7 @@ export default function Gauntlet() {
                     initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 4 }}
-                    className="absolute bottom-full left-1/2 mb-3 -translate-x-1/2 whitespace-nowrap rounded-lg bg-danger px-2 py-1 font-mono text-xs font-bold text-paper shadow-lift"
+                    className="absolute bottom-full left-1/2 mb-3 hidden -translate-x-1/2 whitespace-nowrap rounded-lg bg-danger px-2 py-1 font-mono text-xs font-bold text-paper shadow-lift sm:block"
                   >
                     {score} spam
                   </motion.span>
@@ -400,7 +402,7 @@ export default function Gauntlet() {
             />
           </motion.div>
           <span
-            className="absolute left-1/2 top-full mt-3 -translate-x-1/2 text-[11px] font-semibold sm:text-xs"
+            className="absolute left-1/2 top-full mt-3 hidden -translate-x-1/2 text-[11px] font-semibold sm:block sm:text-xs"
             style={{ color: sent ? "var(--green)" : "var(--muted)" }}
           >
             Inbox
