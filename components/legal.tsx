@@ -4,8 +4,8 @@ import { Nav } from "./nav";
 import { Footer } from "./footer";
 
 /* Shared shell for Privacy / Terms / Data & Security.
-   NOTE: placeholder entity (Inboxed), domain (inboxed.app) and contact
-   (hello@inboxed.app) — replace with real details + legal review before launch. */
+   NOTE: placeholder entity (HitSend), domain (hitsend.app) and contact
+   (hello@hitsend.app) — replace with real details + legal review before launch. */
 
 export function LegalShell({
   title,

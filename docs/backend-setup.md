@@ -1,4 +1,4 @@
-# Inboxed backend — setup & end-to-end test
+# HitSend backend — setup & end-to-end test
 
 Everything is coded against env placeholders. Follow these steps to wire real
 test-mode keys and run the full flow locally. ~15 minutes.
@@ -36,7 +36,7 @@ webhook, no cron.**
 
 1. [dashboard.stripe.com](https://dashboard.stripe.com) → toggle **Test mode** (top right).
 2. **Developers → API keys** → copy the **Secret key** (`sk_test_…`) → `STRIPE_SECRET_KEY`.
-3. **Products → Add product** → "Inboxed Pro", recurring **$9/mo** → copy the
+3. **Products → Add product** → "HitSend Pro", recurring **$9/mo** → copy the
    **Price ID** (`price_…`) → `STRIPE_PRICE_ID`.
 
    *(No webhook to register — entitlement is read live from Stripe.)*

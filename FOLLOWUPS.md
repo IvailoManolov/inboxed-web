@@ -1,4 +1,4 @@
-# Inboxed — follow-ups before / at launch
+# HitSend — follow-ups before / at launch
 
 Running list of things deferred during setup. Not secrets — safe to commit.
 
@@ -33,7 +33,7 @@ Built and tested against **test mode** keys. Before real customers can pay:
 
 - [ ] Fully activate the Stripe account (business details + bank for payouts) —
   required before live keys work.
-- [ ] Recreate the "Inboxed Pro" product/price in **live mode** → new `price_…`.
+- [ ] Recreate the "HitSend Pro" product/price in **live mode** → new `price_…`.
 - [ ] Swap the two env vars (in Vercel, prod): `STRIPE_SECRET_KEY=sk_live_…`
   and `STRIPE_PRICE_ID=price_…` (live). No code changes.
 - [ ] Re-verify one real checkout end-to-end after the swap.

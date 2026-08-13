@@ -5,7 +5,7 @@ const STEPS = [
   {
     Icon: PenLine,
     title: "Write like you always do",
-    body: "Draft your cold email in Gmail. Inboxed reads along quietly in the background — no new tab, no copy-paste, no send-a-test-and-wait.",
+    body: "Draft your cold email in Gmail. HitSend reads along quietly in the background — no new tab, no copy-paste, no send-a-test-and-wait.",
   },
   {
     Icon: ScanSearch,
