@@ -10,12 +10,12 @@ const STEPS = [
   {
     Icon: ScanSearch,
     title: "See exactly what's risky",
-    body: "The moment something trips a spam filter, it's underlined with the reason and the point cost — spam words, link ratio, caps, missing unsubscribe, and more.",
+    body: "The moment a phrase trips a spam filter, HitSend flags it — with the reason and the exact point cost. Trigger words, ALL-CAPS, too many links, a missing unsubscribe, and more.",
   },
   {
     Icon: SendHorizonal,
     title: "Fix it and hit send",
-    body: "One click swaps each flagged phrase for a safe alternative and your score climbs to green. Then send it — knowing it'll actually land.",
+    body: "One click rewrites the flagged phrase to safer wording — or trims it when there's no clean swap — and your score slides toward green. Then hit send, knowing it'll actually land.",
   },
 ];
 
