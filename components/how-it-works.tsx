@@ -5,12 +5,12 @@ const STEPS = [
   {
     Icon: PenLine,
     title: "Write like you always do",
-    body: "Draft your cold email in Gmail. HitSend reads along quietly in the background — no new tab, no copy-paste, no send-a-test-and-wait.",
+    body: "Draft your cold email in Gmail. BeSeen reads along quietly in the background — no new tab, no copy-paste, no send-a-test-and-wait.",
   },
   {
     Icon: ScanSearch,
     title: "See exactly what's risky",
-    body: "The moment a phrase trips a spam filter, HitSend flags it — with the reason and the exact point cost. Trigger words, ALL-CAPS, too many links, a missing unsubscribe, and more.",
+    body: "The moment a phrase trips a spam filter, BeSeen flags it — with the reason and the exact point cost. Trigger words, ALL-CAPS, too many links, a missing unsubscribe, and more.",
   },
   {
     Icon: SendHorizonal,

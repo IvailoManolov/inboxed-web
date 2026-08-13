@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { LegalShell, H2, P, UL, LI } from "@/components/legal";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — HitSend",
-  description: "The terms for using HitSend.",
+  title: "Terms of Service — BeSeen",
+  description: "The terms for using BeSeen.",
 };
 
 export default function TermsPage() {
@@ -11,11 +11,11 @@ export default function TermsPage() {
     <LegalShell
       title="Terms of Service"
       updated="August 5, 2026"
-      intro="These terms are the agreement between you and HitSend when you use our website, web tool, or browser extension. By using HitSend, you agree to them."
+      intro="These terms are the agreement between you and BeSeen when you use our website, web tool, or browser extension. By using BeSeen, you agree to them."
     >
       <H2>The service</H2>
       <P>
-        HitSend analyzes email text and flags content that may trigger spam
+        BeSeen analyzes email text and flags content that may trigger spam
         filters, with suggestions to improve it. It is a helpful guide, not a
         guarantee — deliverability depends on many factors outside our control
         (your domain reputation, the recipient’s provider, and more).
@@ -37,14 +37,14 @@ export default function TermsPage() {
       <H2>Acceptable use</H2>
       <P>You agree not to:</P>
       <UL>
-        <LI>Use HitSend to send spam, phishing, or unlawful email, or to evade anti-abuse systems.</LI>
+        <LI>Use BeSeen to send spam, phishing, or unlawful email, or to evade anti-abuse systems.</LI>
         <LI>Reverse engineer, resell, or copy the service or its rule set.</LI>
         <LI>Disrupt or attempt to gain unauthorized access to our systems.</LI>
       </UL>
 
       <H2>Intellectual property</H2>
       <P>
-        HitSend and its content, branding, and scoring engine are owned by us.
+        BeSeen and its content, branding, and scoring engine are owned by us.
         You keep full ownership of the email content you check.
       </P>
 
@@ -56,14 +56,14 @@ export default function TermsPage() {
 
       <H2>Limitation of liability</H2>
       <P>
-        To the fullest extent permitted by law, HitSend is not liable for
+        To the fullest extent permitted by law, BeSeen is not liable for
         indirect or consequential damages, and our total liability is limited to
         the amount you paid us in the 12 months before the claim.
       </P>
 
       <H2>Termination</H2>
       <P>
-        You can stop using HitSend anytime. We may suspend or end access if these
+        You can stop using BeSeen anytime. We may suspend or end access if these
         terms are broken.
       </P>
 
@@ -74,7 +74,7 @@ export default function TermsPage() {
       </P>
 
       <H2>Contact</H2>
-      <P>Questions about these terms? Email hello@hitsend.app.</P>
+      <P>Questions about these terms? Email hello@beseen.app.</P>
     </LegalShell>
   );
 }

@@ -1,6 +1,6 @@
-# HitSend — landing site
+# BeSeen — landing site
 
-Marketing site for **HitSend**: a deterministic (no-AI) spam-risk checker for cold
+Marketing site for **BeSeen**: a deterministic (no-AI) spam-risk checker for cold
 emails. "Grammarly, but for getting into the inbox."
 
 This repo is the **presentation layer** — the beautiful, animated storefront that

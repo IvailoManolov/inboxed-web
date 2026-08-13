@@ -27,7 +27,7 @@ function SuccessInner() {
           You&apos;re Pro!
         </h1>
         <p className="mt-3 text-ink-soft">
-          Thanks for upgrading. HitSend Pro is now active on your account.
+          Thanks for upgrading. BeSeen Pro is now active on your account.
         </p>
 
         {state === "sent" && (
@@ -47,7 +47,7 @@ function SuccessInner() {
               Sync to extension
             </button>
             <p className="mt-3 text-xs text-muted">
-              Make sure the HitSend extension is installed in this browser, then
+              Make sure the BeSeen extension is installed in this browser, then
               click Sync.
             </p>
           </div>

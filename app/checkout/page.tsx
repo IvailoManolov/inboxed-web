@@ -152,14 +152,14 @@ function CheckoutInner() {
         href="/"
         className="mb-8 font-display text-lg font-extrabold tracking-tight text-ink"
       >
-        HitSend
+        BeSeen
       </a>
 
       <div className="grid w-full max-w-4xl overflow-hidden rounded-[var(--radius-2xl)] border border-line bg-paper shadow-lift md:grid-cols-2">
         {/* Left: branded order summary */}
         <div className="border-b border-line bg-cream/60 p-8 md:border-b-0 md:border-r">
           <span className="inline-flex items-center gap-2 rounded-full border border-line bg-paper px-3 py-1.5 text-xs font-semibold text-coral-deep shadow-soft">
-            HitSend Pro
+            BeSeen Pro
           </span>
           <div className="mt-5 flex items-baseline gap-2">
             <span className="font-display text-5xl font-extrabold text-ink">
@@ -194,7 +194,7 @@ function CheckoutInner() {
             Payment details
           </h1>
           <p className="mt-1 text-sm text-ink-soft">
-            Complete your subscription to unlock HitSend Pro.
+            Complete your subscription to unlock BeSeen Pro.
           </p>
 
           <div className="mt-6">

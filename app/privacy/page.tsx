@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { LegalShell, H2, P, UL, LI } from "@/components/legal";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — HitSend",
+  title: "Privacy Policy — BeSeen",
   description:
-    "How HitSend handles your data. Your email content is analyzed locally and never sold. Google Limited Use disclosure included.",
+    "How BeSeen handles your data. Your email content is analyzed locally and never sold. Google Limited Use disclosure included.",
 };
 
 export default function PrivacyPage() {
@@ -12,13 +12,13 @@ export default function PrivacyPage() {
     <LegalShell
       title="Privacy Policy"
       updated="August 5, 2026"
-      intro="HitSend is built privacy-first. Your email content is analyzed on your own device and is never sold. This policy explains exactly what we collect, why, and the choices you have."
+      intro="BeSeen is built privacy-first. Your email content is analyzed on your own device and is never sold. This policy explains exactly what we collect, why, and the choices you have."
     >
       <H2>Who we are</H2>
       <P>
-        HitSend (“we”, “us”) provides a spam-risk checker for email, available as
-        a web tool and a browser extension at hitsend.app. For any privacy
-        question, contact us at hello@hitsend.app.
+        BeSeen (“we”, “us”) provides a spam-risk checker for email, available as
+        a web tool and a browser extension at beseen.app. For any privacy
+        question, contact us at hello@beseen.app.
       </P>
 
       <H2>What we collect</H2>
@@ -45,7 +45,7 @@ export default function PrivacyPage() {
 
       <H2>Google user data &amp; Limited Use</H2>
       <P>
-        If you connect the HitSend extension to Gmail, its use of information
+        If you connect the BeSeen extension to Gmail, its use of information
         received from Google APIs adheres to the{" "}
         <a
           href="https://developers.google.com/terms/api-services-user-data-policy"
@@ -89,7 +89,7 @@ export default function PrivacyPage() {
       <P>
         Depending on where you live (e.g. under GDPR or CCPA), you may have the
         right to access, correct, export, or delete your data, and to object to
-        certain processing. To exercise any of these, email hello@hitsend.app.
+        certain processing. To exercise any of these, email hello@beseen.app.
       </P>
 
       <H2>Security</H2>
@@ -107,7 +107,7 @@ export default function PrivacyPage() {
       </P>
 
       <H2>Contact</H2>
-      <P>Questions? Email hello@hitsend.app and we’ll help.</P>
+      <P>Questions? Email hello@beseen.app and we’ll help.</P>
     </LegalShell>
   );
 }

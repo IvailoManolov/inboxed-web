@@ -34,7 +34,7 @@ export function Nav() {
             <Mail className="h-[18px] w-[18px]" strokeWidth={2.4} />
           </span>
           <span className="font-display text-lg font-bold tracking-tight text-ink">
-            HitSend
+            BeSeen
           </span>
         </a>
 
