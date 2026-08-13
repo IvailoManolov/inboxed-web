@@ -77,14 +77,14 @@ function UpgradeInner() {
             <Sparkles className="h-3.5 w-3.5" /> HitSend Pro
           </span>
           <h1 className="mt-4 font-display text-3xl font-extrabold leading-tight tracking-tight text-ink">
-            {pro ? "You're already Pro 🎉" : "Keep the full spam checker"}
+            {pro ? "You're already Pro 🎉" : "Never land in spam again"}
           </h1>
           <p className="mx-auto mt-3 max-w-sm text-ink-soft">
             {pro
               ? extId
                 ? "Connect the extension to unlock Pro in Gmail — no need to pay again."
                 : "Your subscription is active. Manage it any time."
-              : "Score, every flagged phrase, and one-click fixes on every draft — for less than one recovered reply a month."}
+              : "Every draft checked and fixed before you hit send — for less than one lost reply a month."}
           </p>
         </div>
 
