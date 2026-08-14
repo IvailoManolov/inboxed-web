@@ -18,7 +18,7 @@ export function Hero() {
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-line bg-paper px-3 py-1.5 text-xs font-medium text-ink-soft shadow-soft">
             <span className="h-1.5 w-1.5 rounded-full bg-green" />
-            No AI guesswork — just the rules spam filters actually use
+            No AI guesswork - just the rules spam filters actually use
           </span>
 
           <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-ink sm:text-6xl">
@@ -48,29 +48,29 @@ export function Hero() {
           <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-ink-soft">
             HitSend checks every email before you hit send, flags exactly what
             trips spam filters, and shows you the one-click fix. Land in the
-            inbox — not the folder no one opens.
+            inbox - not the folder no one opens.
           </p>
 
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             {EXTENSION_URL ? (
-              // Listing is live — lead with the install, demo becomes secondary.
+              // Listing is live - lead with the install, demo becomes secondary.
               <>
                 <AddToChrome variant="primary" />
                 <a
                   href="#try"
                   className="inline-flex items-center gap-2 rounded-full border border-line bg-paper px-6 py-3 text-base font-semibold text-ink transition-colors hover:bg-cream-deep"
                 >
-                  Check my email — free
+                  Check my email - free
                 </a>
               </>
             ) : (
-              // Pre-approval — the live demo is the top-of-funnel hook.
+              // Pre-approval - the live demo is the top-of-funnel hook.
               <>
                 <a
                   href="#try"
                   className="group inline-flex items-center gap-2 rounded-full bg-coral px-6 py-3 text-base font-semibold text-paper shadow-lift transition-transform hover:-translate-y-0.5 hover:bg-coral-deep"
                 >
-                  Check my email — free
+                  Check my email - free
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </a>
                 <a
@@ -85,7 +85,7 @@ export function Hero() {
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted">
             <span className="inline-flex items-center gap-1.5">
-              <Sparkles className="h-4 w-4 text-coral" /> Free for 7 days — no
+              <Sparkles className="h-4 w-4 text-coral" /> Free for 7 days - no
               credit card
             </span>
             <span className="inline-flex items-center gap-1.5">

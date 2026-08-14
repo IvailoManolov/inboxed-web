@@ -2,21 +2,21 @@ import { Reveal } from "./reveal";
 
 const BANDS = [
   {
-    range: "0–29",
+    range: "0-29",
     label: "Inbox",
     color: "var(--green)",
     soft: "var(--green-soft)",
-    body: "Clean. Nothing worth worrying about — hit send.",
+    body: "Clean. Nothing worth worrying about - hit send.",
   },
   {
-    range: "30–59",
+    range: "30-59",
     label: "Risky",
     color: "var(--amber)",
     soft: "#fbedd4",
     body: "A few things could tip this into spam. Worth a quick look.",
   },
   {
-    range: "60–100",
+    range: "60-100",
     label: "Spam",
     color: "var(--danger)",
     soft: "var(--danger-soft)",
@@ -36,8 +36,8 @@ export function ScoreGuide() {
             A number you can actually read.
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-ink-soft">
-            Every email gets a <strong>0–100 spam-risk score</strong>. It isn't a
-            percentage — it's a points system. Each risk we spot (a spam word, a
+            Every email gets a <strong>0-100 spam-risk score</strong>. It isn't a
+            percentage - it's a points system. Each risk we spot (a spam word, a
             shortened link, a missing unsubscribe) adds a few points, weighted by
             how much filters actually care. Fewer points → lower score →{" "}
             <strong>more likely to land in the inbox.</strong>

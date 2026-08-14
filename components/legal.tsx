@@ -5,7 +5,7 @@ import { Footer } from "./footer";
 
 /* Shared shell for Privacy / Terms / Data & Security.
    NOTE: placeholder entity (HitSend), domain (hitsend.app) and contact
-   (hello@hitsend.app) — replace with real details + legal review before launch. */
+   (hello@hitsend.app) - replace with real details + legal review before launch. */
 
 export function LegalShell({
   title,

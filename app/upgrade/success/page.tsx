@@ -33,7 +33,7 @@ function SuccessInner() {
 
         {state === "sent" && (
           <p className="mt-6 rounded-[var(--radius-xl)] border border-green/20 bg-green-soft px-4 py-3 text-sm font-medium text-green">
-            ✓ Synced to your extension. Head back to Gmail — one-click fixes are
+            ✓ Synced to your extension. Head back to Gmail - one-click fixes are
             unlocked.
           </p>
         )}
@@ -43,7 +43,7 @@ function SuccessInner() {
             <p className="font-medium text-ink">One last step: install the extension</p>
             <p className="mt-1 text-xs text-muted">
               We couldn&apos;t reach it in this browser. If you haven&apos;t
-              added HitSend yet, install it — then come back and sync.
+              added HitSend yet, install it - then come back and sync.
             </p>
             <div className="mt-3 flex flex-col gap-2">
               <AddToChrome block variant="secondary" label="Add HitSend to Chrome" />
@@ -51,7 +51,7 @@ function SuccessInner() {
                 onClick={handoff}
                 className="rounded-full bg-ink py-2.5 font-semibold text-paper transition-transform hover:-translate-y-0.5"
               >
-                I&apos;ve installed it — sync now
+                I&apos;ve installed it - sync now
               </button>
             </div>
           </div>

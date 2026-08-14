@@ -3,7 +3,7 @@ import type Stripe from "stripe";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { stripe } from "@/lib/stripe";
 
-/* Update the card on file — on our domain via Payment Element, no hosted
+/* Update the card on file - on our domain via Payment Element, no hosted
  * portal. POST creates a SetupIntent (client confirms it); PUT sets the
  * resulting payment method as the customer + subscription default. */
 

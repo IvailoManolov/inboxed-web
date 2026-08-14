@@ -6,7 +6,7 @@ import { proFromSubs, type StripeSubLite } from "@/lib/subscription";
 
 /* The extension calls this with the user's Supabase access token to learn
  * whether they're Pro. Identity comes from Supabase Auth; Pro status is read
- * LIVE from Stripe — no local subscriptions table, no cron. Bearer auth only,
+ * LIVE from Stripe - no local subscriptions table, no cron. Bearer auth only,
  * so it works from the extension's background worker. */
 
 export const runtime = "nodejs";
@@ -26,7 +26,7 @@ export function OPTIONS() {
 }
 
 /** current_period_end lives at the top level in older API versions and on the
- * subscription item in newer ones — read whichever is present. */
+ * subscription item in newer ones - read whichever is present. */
 function periodEnd(sub: Stripe.Subscription): number {
   const top = (sub as unknown as { current_period_end?: number }).current_period_end;
   if (typeof top === "number") return top;

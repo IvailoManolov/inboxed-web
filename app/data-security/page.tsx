@@ -5,7 +5,7 @@ import { Reveal } from "@/components/reveal";
 import { ShieldCheck, MonitorSmartphone, EyeOff, Ban, ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Data & Security — HitSend",
+  title: "Data & Security - HitSend",
   description:
     "How HitSend handles your data. Your emails are analyzed on your device and never sold. Plain-English, no fine print.",
 };
@@ -14,17 +14,17 @@ const PILLARS = [
   {
     Icon: MonitorSmartphone,
     title: "Analyzed on your device",
-    body: "The scoring engine runs locally in your browser. The text of your emails is checked where you type it — it doesn’t need to travel to us.",
+    body: "The scoring engine runs locally in your browser. The text of your emails is checked where you type it - it doesn’t need to travel to us.",
   },
   {
     Icon: Ban,
     title: "Never sold, ever",
-    body: "We don’t sell your data or your email content to anyone. That’s not our business model — subscriptions are.",
+    body: "We don’t sell your data or your email content to anyone. That’s not our business model - subscriptions are.",
   },
   {
     Icon: EyeOff,
     title: "No AI reading your mail",
-    body: "HitSend uses deterministic rules — the same kind spam filters use — not a large language model. Nothing gets sent off to be “trained on.”",
+    body: "HitSend uses deterministic rules - the same kind spam filters use - not a large language model. Nothing gets sent off to be “trained on.”",
   },
 ];
 
@@ -49,7 +49,7 @@ export default function DataSecurityPage() {
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-ink-soft">
               We built HitSend so you never have to trade privacy for a better
-              inbox rate. Here’s exactly how your data is handled — in plain
+              inbox rate. Here’s exactly how your data is handled - in plain
               English.
             </p>
           </div>
@@ -102,7 +102,7 @@ export default function DataSecurityPage() {
               <p className="mt-3 text-base leading-relaxed text-ink-soft">
                 To run your account we store your email address and (via Stripe)
                 your subscription status. We also look at anonymous, aggregated
-                usage — like how many checks ran — which never contains the text
+                usage - like how many checks ran - which never contains the text
                 of your emails. The full detail lives in our{" "}
                 <a href="/privacy" className="font-medium text-coral underline">
                   Privacy Policy
@@ -114,7 +114,7 @@ export default function DataSecurityPage() {
                 <p className="text-base leading-relaxed text-ink-soft">
                   Have a security question, or want to report something? Email{" "}
                   <span className="font-semibold text-ink">hello@hitsend.app</span>{" "}
-                  — a real person will answer.
+                  - a real person will answer.
                 </p>
               </div>
             </div>

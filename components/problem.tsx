@@ -4,7 +4,7 @@ import { Reveal } from "./reveal";
 const STATS = [
   {
     stat: "1 in 6",
-    line: "cold emails never reach the inbox — they're silently filtered to spam.",
+    line: "cold emails never reach the inbox - they're silently filtered to spam.",
   },
   {
     stat: "0",
@@ -30,7 +30,7 @@ export function Problem() {
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-soft">
             One spammy word in the subject. Three links in a short email. A
             sneaky ALL-CAPS. That's all it takes for a filter to bury your
-            outreach — and you'll blame your copy, your list, or your luck.
+            outreach - and you'll blame your copy, your list, or your luck.
           </p>
           <a
             href="/stats"

@@ -17,7 +17,7 @@ const VARIANT: Record<Variant, string> = {
 
 export function AddToChrome({
   variant = "primary",
-  label = "Add to Chrome — free",
+  label = "Add to Chrome - free",
   block = false,
   className = "",
 }: {

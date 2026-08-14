@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { LegalShell, H2, P, UL, LI } from "@/components/legal";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — HitSend",
+  title: "Terms of Service - HitSend",
   description: "The terms for using HitSend.",
 };
 
@@ -17,7 +17,7 @@ export default function TermsPage() {
       <P>
         HitSend analyzes email text and flags content that may trigger spam
         filters, with suggestions to improve it. It is a helpful guide, not a
-        guarantee — deliverability depends on many factors outside our control
+        guarantee - deliverability depends on many factors outside our control
         (your domain reputation, the recipient’s provider, and more).
       </P>
 

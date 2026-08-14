@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 
 /* ------------------------------------------------------------------ *
- * The Gauntlet — an email docks at each spam-filter gate, the gate
+ * The Gauntlet - an email docks at each spam-filter gate, the gate
  * expands and analyzes, a spam score climbs (67 → 74 → 78), then one
  * click fixes everything and it's SENT into the inbox, all green.
  * ------------------------------------------------------------------ */
@@ -67,8 +67,8 @@ const CAPTION: Record<Phase, string> = {
   scan2: "3 links in a short email",
   dock3: "Analyzing formatting…",
   scan3: "ALL CAPS + urgency phrases",
-  fixing: "Fixing all 3 — one click",
-  sent: "Sent — landed in the inbox",
+  fixing: "Fixing all 3 - one click",
+  sent: "Sent - landed in the inbox",
 };
 
 function activeGate(phase: Phase): number {
@@ -202,7 +202,7 @@ export default function Gauntlet() {
           </span>
         </div>
 
-        {/* score badge — fixed size so swapping states never resizes the pill */}
+        {/* score badge - fixed size so swapping states never resizes the pill */}
         <div
           className="relative flex h-9 w-[140px] items-center justify-center rounded-full transition-colors duration-500"
           style={{ background: score === 0 ? "var(--cream-deep)" : band.soft }}
@@ -229,7 +229,7 @@ export default function Gauntlet() {
                 transition={{ duration: 0.2 }}
                 className="absolute inset-0 flex items-center justify-center gap-2"
               >
-                <span className="font-mono text-lg font-bold text-muted">—</span>
+                <span className="font-mono text-lg font-bold text-muted">-</span>
                 <span className="text-xs font-semibold uppercase tracking-wide text-muted">
                   Ready
                 </span>
@@ -355,7 +355,7 @@ export default function Gauntlet() {
               </motion.div>
 
               {/* label pinned below the circle (doesn't shift centering).
-                  Hidden on phones — the fixed-position labels overlap on
+                  Hidden on phones - the fixed-position labels overlap on
                   narrow screens, so mobile shows the animation only. */}
               <span className="absolute left-1/2 top-full mt-3 hidden -translate-x-1/2 whitespace-nowrap text-[11px] font-medium text-muted sm:block sm:text-xs">
                 {gate.label}

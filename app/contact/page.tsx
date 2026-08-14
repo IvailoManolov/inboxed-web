@@ -59,7 +59,7 @@ export default function ContactPage() {
           </h1>
           <p className="mt-3 text-ink-soft">
             Sending at scale, or want something custom? Leave your email and
-            we&apos;ll reach out — a real person, not a drip sequence.
+            we&apos;ll reach out - a real person, not a drip sequence.
           </p>
 
           <ul className="mt-7 space-y-4">
@@ -82,7 +82,7 @@ export default function ContactPage() {
                 <Check className="h-7 w-7 text-green" strokeWidth={3} />
               </div>
               <h2 className="mt-5 font-display text-2xl font-bold text-ink">
-                Got it — thank you!
+                Got it - thank you!
               </h2>
               <p className="mt-2 text-sm text-ink-soft">
                 We&apos;ll be in touch at{" "}
@@ -162,7 +162,7 @@ export default function ContactPage() {
               </button>
 
               <p className="text-center text-xs text-muted">
-                One message per email — we&apos;ll only reach out about your
+                One message per email - we&apos;ll only reach out about your
                 inquiry.
               </p>
             </form>

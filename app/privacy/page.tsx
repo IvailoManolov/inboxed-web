@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { LegalShell, H2, P, UL, LI } from "@/components/legal";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — HitSend",
+  title: "Privacy Policy - HitSend",
   description:
     "How HitSend handles your data. Your email content is analyzed locally and never sold. Google Limited Use disclosure included.",
 };
@@ -24,20 +24,20 @@ export default function PrivacyPage() {
       <H2>What we collect</H2>
       <UL>
         <LI>
-          <strong>Account data</strong> — if you create an account: your email
+          <strong>Account data</strong> - if you create an account: your email
           address and authentication details.
         </LI>
         <LI>
-          <strong>Billing data</strong> — handled by our payment processor
+          <strong>Billing data</strong> - handled by our payment processor
           (Stripe). We never see or store your full card number.
         </LI>
         <LI>
-          <strong>Product usage</strong> — anonymous, aggregated events (e.g.
+          <strong>Product usage</strong> - anonymous, aggregated events (e.g.
           “a check was run”) to improve the product. No email content is
           included.
         </LI>
         <LI>
-          <strong>Email content</strong> — the text of emails you check is
+          <strong>Email content</strong> - the text of emails you check is
           scored <strong>locally, on your device</strong>. We do not transmit,
           store, or read the content of your emails.
         </LI>

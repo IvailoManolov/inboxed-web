@@ -79,7 +79,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "We already have an inquiry from this email — we'll be in touch soon.",
+            "We already have an inquiry from this email - we'll be in touch soon.",
         },
         { status: 409 },
       );

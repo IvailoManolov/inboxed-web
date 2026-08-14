@@ -5,11 +5,11 @@ import { animate, motion, useInView } from "motion/react";
 import { Reveal } from "./reveal";
 
 /**
- * "It flags spam as you write" — a faithful HTML mock of a Gmail compose with
+ * "It flags spam as you write" - a faithful HTML mock of a Gmail compose with
  * the live HitSend panel beside it. On scroll-into-view a scan sweeps the
  * draft, the risky phrases highlight one-by-one in sync with the findings
  * populating the panel, and the score climbs from green toward amber.
- * Hovering a flag (or a finding row) links the two — mirroring the real
+ * Hovering a flag (or a finding row) links the two - mirroring the real
  * "Find in text" feature. Everything is real DOM, so it's crisp at any size.
  */
 
@@ -24,7 +24,7 @@ const BODY: Run[][] = [
     F("guaranteed", "Guaranteed"),
     P(" opportunity to increase your revenue by 100%."),
   ],
-  [F("limited", "Limited time"), P(" offer — our seats are filling up rather quickly!")],
+  [F("limited", "Limited time"), P(" offer - our seats are filling up rather quickly!")],
   [P("It's about our system that can increase profit by 100% in the next 3 months.")],
   [P("All of the clients inside clashy.net are extremely happy with it.")],
   [F("clickhere", "Click here"), P(" to mark your seat: https://clashy.net")],
@@ -98,7 +98,7 @@ export function FlagDemo() {
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-ink-soft">
             HitSend reads your draft against the rules real spam filters use and
-            flags exactly what puts you at risk — live, as you type.{" "}
+            flags exactly what puts you at risk - live, as you type.{" "}
             <span className="font-semibold text-ink">Hover a flag</span> to spot
             it in the email.
           </p>

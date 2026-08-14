@@ -151,7 +151,7 @@ export default function AccountPage() {
       setMsg(
         action === "cancel"
           ? "Your subscription will end at the close of this billing period."
-          : "Welcome back — your subscription will keep renewing.",
+          : "Welcome back - your subscription will keep renewing.",
       );
     } else {
       setMsg("Something went wrong. Please try again.");

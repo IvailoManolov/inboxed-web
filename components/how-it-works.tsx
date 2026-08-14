@@ -5,17 +5,17 @@ const STEPS = [
   {
     Icon: PenLine,
     title: "Write like you always do",
-    body: "Draft your cold email in Gmail. HitSend reads along quietly in the background — no new tab, no copy-paste, no send-a-test-and-wait.",
+    body: "Draft your cold email in Gmail. HitSend reads along quietly in the background - no new tab, no copy-paste, no send-a-test-and-wait.",
   },
   {
     Icon: ScanSearch,
     title: "See exactly what's risky",
-    body: "The moment a phrase trips a spam filter, HitSend flags it — with the reason and the exact point cost. Trigger words, ALL-CAPS, too many links, a missing unsubscribe, and more.",
+    body: "The moment a phrase trips a spam filter, HitSend flags it - with the reason and the exact point cost. Trigger words, ALL-CAPS, too many links, a missing unsubscribe, and more.",
   },
   {
     Icon: SendHorizonal,
     title: "Fix it and hit send",
-    body: "One click rewrites the flagged phrase to safer wording — or trims it when there's no clean swap — and your score slides toward green. Then hit send, knowing it'll actually land.",
+    body: "One click rewrites the flagged phrase to safer wording - or trims it when there's no clean swap - and your score slides toward green. Then hit send, knowing it'll actually land.",
   },
 ];
 
@@ -30,7 +30,7 @@ export function HowItWorks() {
           Three steps. No dashboards to learn.
         </h2>
         <p className="mt-4 text-lg leading-relaxed text-ink-soft">
-          It feels like spell-check — except instead of typos, it catches the
+          It feels like spell-check - except instead of typos, it catches the
           things that send you to spam.
         </p>
       </Reveal>

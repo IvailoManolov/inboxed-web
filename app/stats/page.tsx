@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "The data — why so many emails end up in spam | HitSend",
+  title: "The data - why so many emails end up in spam | HitSend",
   description:
     "Real, cited statistics on email deliverability, each linked to its primary source: how many emails never reach the inbox, how much of all email is spam, and what actually trips filters.",
 };
@@ -21,7 +21,7 @@ const HEADLINE_STATS = [
     big: "~1 in 6",
     label: "emails never reaches the inbox",
     detail:
-      "Across 2024–25, average inbox placement sat around 84% globally — so roughly one in six legitimate emails is filtered to spam or quietly disappears.",
+      "Across 2024-25, average inbox placement sat around 84% globally - so roughly one in six legitimate emails is filtered to spam or quietly disappears.",
     source: "Validity · 2025 Deliverability Benchmark",
     href: "https://www.validity.com/resource-center/2025-email-deliverability-benchmark-report/",
   },
@@ -29,7 +29,7 @@ const HEADLINE_STATS = [
     big: "47%",
     label: "of all email is spam",
     detail:
-      "Nearly half of global email traffic in 2024 was spam. That’s exactly why providers filter so aggressively — and why real senders keep getting caught in the net.",
+      "Nearly half of global email traffic in 2024 was spam. That’s exactly why providers filter so aggressively - and why real senders keep getting caught in the net.",
     source: "Statista · Spam share of email traffic",
     href: "https://www.statista.com/statistics/420391/spam-email-traffic-share/",
   },
@@ -37,7 +37,7 @@ const HEADLINE_STATS = [
     big: "0.3%",
     label: "spam complaints can sink your domain",
     detail:
-      "Gmail’s own rules: if more than 3 in 1,000 recipients hit “report spam,” your future emails get far more likely to be filtered — for everyone on your domain. Aim under 0.1%.",
+      "Gmail’s own rules: if more than 3 in 1,000 recipients hit “report spam,” your future emails get far more likely to be filtered - for everyone on your domain. Aim under 0.1%.",
     source: "Google · Email sender guidelines",
     href: "https://support.google.com/mail/answer/14229414",
   },
@@ -45,7 +45,7 @@ const HEADLINE_STATS = [
     big: "75.6%",
     label: "inbox rate at the toughest provider",
     detail:
-      "At Microsoft / Outlook, only about three-quarters of legitimate email reaches the inbox — so even senders doing everything right lose a chunk of their outreach.",
+      "At Microsoft / Outlook, only about three-quarters of legitimate email reaches the inbox - so even senders doing everything right lose a chunk of their outreach.",
     source: "Validity · 2025 Deliverability Benchmark",
     href: "https://www.validity.com/resource-center/2025-email-deliverability-benchmark-report/",
   },
@@ -62,22 +62,22 @@ const TRIGGERS = [
 
 const SOURCES = [
   {
-    name: "Validity — 2025 Email Deliverability Benchmark Report",
+    name: "Validity - 2025 Email Deliverability Benchmark Report",
     note: "Global and provider-level inbox-placement rates.",
     href: "https://www.validity.com/resource-center/2025-email-deliverability-benchmark-report/",
   },
   {
-    name: "Statista — Spam share of global email traffic",
+    name: "Statista - Spam share of global email traffic",
     note: "Spam as a percentage of all email sent, tracked monthly.",
     href: "https://www.statista.com/statistics/420391/spam-email-traffic-share/",
   },
   {
-    name: "Google — Email sender guidelines",
+    name: "Google - Email sender guidelines",
     note: "Official spam-complaint thresholds for reaching Gmail inboxes.",
     href: "https://support.google.com/mail/answer/14229414",
   },
   {
-    name: "EmailTooltester — Deliverability & spam studies",
+    name: "EmailTooltester - Deliverability & spam studies",
     note: "Independent, repeated inbox-placement tests across providers.",
     href: "https://www.emailtooltester.com/en/blog/spam-statistics/",
   },
@@ -105,7 +105,7 @@ export default function StatsPage() {
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-ink-soft">
               We won’t ask you to take our word for it. Every number below links
-              straight to its primary source — tap any card and check it
+              straight to its primary source - tap any card and check it
               yourself.
             </p>
           </div>
@@ -156,7 +156,7 @@ export default function StatsPage() {
                   <p className="mt-3 text-base leading-relaxed text-ink-soft">
                     When an email is filtered to spam, there’s no bounce, no
                     error, no notice. It just silently disappears. You assume the
-                    prospect wasn’t interested — when the truth is they never saw
+                    prospect wasn’t interested - when the truth is they never saw
                     it. Filters score every message in milliseconds against
                     hundreds of signals, and one or two bad ones is all it takes.
                   </p>
@@ -195,7 +195,7 @@ export default function StatsPage() {
             </h2>
             <p className="mt-3 text-base leading-relaxed text-ink-soft">
               Deliverability figures vary by study, year, industry, and mailbox
-              provider — anyone quoting a single “exact” number is guessing. We
+              provider - anyone quoting a single “exact” number is guessing. We
               round conservatively and link the primary research so you can judge
               for yourself:
             </p>
@@ -231,7 +231,7 @@ export default function StatsPage() {
                 Don’t become a statistic.
               </h3>
               <p className="mx-auto mt-2 max-w-md text-cream/70">
-                Check your next cold email before you send it — free, in seconds.
+                Check your next cold email before you send it - free, in seconds.
               </p>
               <a
                 href="/#try"

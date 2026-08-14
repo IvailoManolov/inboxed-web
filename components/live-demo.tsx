@@ -6,7 +6,7 @@ import { Lock, Sparkles, ScanSearch, RotateCcw } from "lucide-react";
 import { Reveal } from "./reveal";
 
 /* A scripted result-screen preview. The real scoring engine lives in the
-   product, server-side — this section only demonstrates the experience.
+   product, server-side - this section only demonstrates the experience.
    One-click fixes are intentionally gated to show the free→paid line. */
 
 type Tok = { t: string; bad?: boolean };
@@ -29,7 +29,7 @@ const EXAMPLES: Example[] = [
     score: 78,
     subject: [
       { t: "GUARANTEED", bad: true },
-      { t: " results — " },
+      { t: " results - " },
       { t: "act now!!!", bad: true },
     ],
     body: [
@@ -52,17 +52,17 @@ const EXAMPLES: Example[] = [
   },
   {
     id: "realistic",
-    tab: "Looks fine — still risky",
+    tab: "Looks fine - still risky",
     hint: "A normal cold email that quietly still trips filters.",
     score: 41,
     subject: [{ t: "Quick question", bad: true }, { t: " about your hiring" }],
     body: [
-      { t: "Hi Sarah, I noticed you're growing the sales team. I help reps book more demos — open to a quick 15-min call this week? Grab a time here: " },
+      { t: "Hi Sarah, I noticed you're growing the sales team. I help reps book more demos - open to a quick 15-min call this week? Grab a time here: " },
       { t: "book.me/alex-x9f2", bad: true },
       { t: ". No worries if not!" },
     ],
     findings: [
-      { penalty: 12, text: '"Quick question" — an overused cold-open filters learn to flag', tag: "Subject" },
+      { penalty: 12, text: '"Quick question" - an overused cold-open filters learn to flag', tag: "Subject" },
       { penalty: 10, text: "Link uses a shortener / unfamiliar domain", tag: "Link trust" },
       { penalty: 9, text: "No unsubscribe line or physical address", tag: "Hygiene" },
       { penalty: 7, text: "Sent as HTML with almost no plain-text balance", tag: "Structure" },
@@ -188,7 +188,7 @@ export function LiveDemo() {
                     Result
                   </span>
                   <p className="mt-0.5 text-[11px] text-muted">
-                    0–100 · lower is better
+                    0-100 · lower is better
                   </p>
                 </div>
                 <div
@@ -199,7 +199,7 @@ export function LiveDemo() {
                     className="font-mono text-lg font-bold tabular-nums"
                     style={{ color: scanned ? b.fg : "var(--muted)" }}
                   >
-                    {scanned ? ex.score : "—"}
+                    {scanned ? ex.score : "-"}
                   </span>
                   <span
                     className="text-xs font-semibold uppercase tracking-wide"

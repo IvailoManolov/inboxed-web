@@ -16,8 +16,8 @@ import { PRICE_LABEL } from "@/lib/config";
 const FEATURES = [
   "One-click fixes on every flagged phrase",
   "The full findings list, not just the top 5",
-  "Unlimited checks — no trial expiry",
-  "100% private — no email content ever leaves your browser",
+  "Unlimited checks - no trial expiry",
+  "100% private - no email content ever leaves your browser",
 ];
 
 /** Brand-matched styling for the Stripe Payment Element. */
@@ -92,7 +92,7 @@ function PayForm({ extId }: { extId?: string }) {
             <Loader2 className="h-4 w-4 animate-spin" /> Processing…
           </>
         ) : (
-          `Subscribe — ${PRICE_LABEL}`
+          `Subscribe - ${PRICE_LABEL}`
         )}
       </button>
 
@@ -183,7 +183,7 @@ function CheckoutInner() {
 
           <div className="mt-8 flex items-center gap-2 rounded-[var(--radius-xl)] border border-line bg-paper px-4 py-3 text-xs text-ink-soft">
             <ShieldCheck className="h-4 w-4 shrink-0 text-green" />
-            Your email content never leaves your browser — we only check the
+            Your email content never leaves your browser - we only check the
             deliverability, never store the message.
           </div>
         </div>

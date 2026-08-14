@@ -8,7 +8,7 @@ import { proFromSubs } from "@/lib/subscription";
 
 /* Powers the custom (Payment Element) checkout at /checkout. Creates a Stripe
  * subscription in `default_incomplete` state and returns the client secret of
- * the invoice's payment — the browser confirms it with the Payment Element, so
+ * the invoice's payment - the browser confirms it with the Payment Element, so
  * the whole checkout lives on our domain (no hosted Stripe page). Stripe stays
  * the source of truth; the customer id is stashed on the auth user's
  * app_metadata, same as the hosted flow. */
@@ -16,7 +16,7 @@ import { proFromSubs } from "@/lib/subscription";
 export const runtime = "nodejs";
 
 /** current_period_end lives at the top level in older API versions and on the
- * subscription item in newer ones — read whichever is present. */
+ * subscription item in newer ones - read whichever is present. */
 function periodEnd(sub: Stripe.Subscription): number {
   const top = (sub as unknown as { current_period_end?: number }).current_period_end;
   if (typeof top === "number") return top;

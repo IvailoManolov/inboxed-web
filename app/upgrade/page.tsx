@@ -12,8 +12,8 @@ import { AddToChrome } from "@/components/add-to-chrome";
 const FEATURES = [
   "One-click fixes on every flagged phrase",
   "The full findings list, not just the top 5",
-  "Unlimited checks — no trial expiry",
-  "100% private — no email content ever leaves your browser",
+  "Unlimited checks - no trial expiry",
+  "100% private - no email content ever leaves your browser",
 ];
 
 function UpgradeInner() {
@@ -58,7 +58,7 @@ function UpgradeInner() {
   }
 
   function checkout() {
-    // Our own branded checkout page (Payment Element) — no hosted Stripe page.
+    // Our own branded checkout page (Payment Element) - no hosted Stripe page.
     setBusy(true);
     window.location.href = `/checkout${extId ? `?ext_id=${encodeURIComponent(extId)}` : ""}`;
   }
@@ -83,15 +83,15 @@ function UpgradeInner() {
           <p className="mx-auto mt-3 max-w-sm text-ink-soft">
             {pro
               ? extId
-                ? "Connect the extension to unlock Pro in Gmail — no need to pay again."
+                ? "Connect the extension to unlock Pro in Gmail - no need to pay again."
                 : "Your subscription is active. Manage it any time."
-              : "Every draft checked and fixed before you hit send — for less than one lost reply a month."}
+              : "Every draft checked and fixed before you hit send - for less than one lost reply a month."}
           </p>
         </div>
 
         {canceled && (
           <p className="mt-6 rounded-[var(--radius-xl)] border border-amber/30 bg-amber/10 px-4 py-3 text-center text-sm text-ink-soft">
-            Checkout canceled — no charge was made. You can try again any time.
+            Checkout canceled - no charge was made. You can try again any time.
           </p>
         )}
 
@@ -134,11 +134,11 @@ function UpgradeInner() {
                 <GoogleGlyph /> Sign in with Google to continue
               </button>
             ) : pro ? (
-              // Already Pro — never route a paying user back through checkout.
+              // Already Pro - never route a paying user back through checkout.
               extId ? (
                 connectState === "sent" ? (
                   <div className="rounded-[var(--radius-xl)] border border-green/20 bg-green-soft px-4 py-3.5 text-center text-sm font-medium text-green">
-                    ✓ Connected. Head back to Gmail — Pro is unlocked.
+                    ✓ Connected. Head back to Gmail - Pro is unlocked.
                   </div>
                 ) : (
                   <>
@@ -185,7 +185,7 @@ function UpgradeInner() {
                 disabled={busy}
                 className="w-full rounded-full bg-coral py-3.5 font-semibold text-paper shadow-lift transition-transform hover:-translate-y-0.5 hover:bg-coral-deep disabled:translate-y-0 disabled:opacity-60"
               >
-                {busy ? "Redirecting to checkout…" : `Go Pro — ${PRICE_LABEL}`}
+                {busy ? "Redirecting to checkout…" : `Go Pro - ${PRICE_LABEL}`}
               </button>
             )}
           </div>
