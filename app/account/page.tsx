@@ -9,7 +9,13 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 import type { Appearance } from "@stripe/stripe-js";
-import { Loader2, CreditCard, CheckCircle2, AlertTriangle } from "lucide-react";
+import {
+  Loader2,
+  CreditCard,
+  CheckCircle2,
+  AlertTriangle,
+  Lock,
+} from "lucide-react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { getStripe } from "@/lib/stripe-browser";
 
@@ -345,8 +351,8 @@ export default function AccountPage() {
             >
               Sign out
             </button>
-            <p className="text-center text-xs text-muted">
-              Billing is handled securely by Stripe.
+            <p className="flex items-center justify-center gap-1.5 text-center text-xs text-muted">
+              <Lock className="h-3.5 w-3.5" /> Powered and protected by Stripe
             </p>
           </div>
         )}
