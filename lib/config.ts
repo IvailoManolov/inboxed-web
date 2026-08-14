@@ -14,6 +14,11 @@ export const SUPABASE_ANON_KEY =
 /** Display-only price label shown on the upgrade page. */
 export const PRICE_LABEL = process.env.NEXT_PUBLIC_PRICE_LABEL ?? "$9/mo";
 
+/** Chrome Web Store listing URL. Empty until the extension is approved — while
+ * empty, the install CTAs soft-gate to a "coming soon" state. Drop the real
+ * URL into NEXT_PUBLIC_EXTENSION_URL (Vercel) + redeploy to light up the funnel. */
+export const EXTENSION_URL = process.env.NEXT_PUBLIC_EXTENSION_URL ?? "";
+
 /** Stripe publishable key — safe in the browser; used by the custom checkout
  * (Payment Element) to tokenize the card client-side. */
 export const STRIPE_PUBLISHABLE_KEY =

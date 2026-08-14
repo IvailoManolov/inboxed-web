@@ -7,6 +7,7 @@ import { Check, ShieldCheck, Lock, Sparkles, Loader2, PartyPopper } from "lucide
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { connectExtension, fetchProStatus, type HandoffState } from "@/lib/extension";
 import { PRICE_LABEL } from "@/lib/config";
+import { AddToChrome } from "@/components/add-to-chrome";
 
 const FEATURES = [
   "One-click fixes on every flagged phrase",
@@ -155,10 +156,18 @@ function UpgradeInner() {
                       )}
                     </button>
                     {connectState === "unavailable" && (
-                      <p className="mt-3 text-center text-xs text-ink-soft">
-                        Couldn&apos;t reach the extension. Make sure HitSend is
-                        installed in this browser, then try again.
-                      </p>
+                      <>
+                        <p className="mt-3 text-center text-xs text-ink-soft">
+                          Couldn&apos;t reach the extension. Install HitSend in
+                          this browser, then try again.
+                        </p>
+                        <AddToChrome
+                          block
+                          variant="secondary"
+                          label="Add HitSend to Chrome"
+                          className="mt-3"
+                        />
+                      </>
                     )}
                   </>
                 )

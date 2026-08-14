@@ -3,6 +3,8 @@
 import { motion } from "motion/react";
 import { ArrowRight, ShieldCheck, Zap, Sparkles } from "lucide-react";
 import Gauntlet from "./gauntlet";
+import { AddToChrome } from "./add-to-chrome";
+import { EXTENSION_URL } from "@/lib/config";
 
 export function Hero() {
   return (
@@ -50,19 +52,35 @@ export function Hero() {
           </p>
 
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a
-              href="#try"
-              className="group inline-flex items-center gap-2 rounded-full bg-coral px-6 py-3 text-base font-semibold text-paper shadow-lift transition-transform hover:-translate-y-0.5 hover:bg-coral-deep"
-            >
-              Check my email — free
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </a>
-            <a
-              href="#how"
-              className="inline-flex items-center gap-2 rounded-full border border-line bg-paper px-6 py-3 text-base font-semibold text-ink transition-colors hover:bg-cream-deep"
-            >
-              See how it works
-            </a>
+            {EXTENSION_URL ? (
+              // Listing is live — lead with the install, demo becomes secondary.
+              <>
+                <AddToChrome variant="primary" />
+                <a
+                  href="#try"
+                  className="inline-flex items-center gap-2 rounded-full border border-line bg-paper px-6 py-3 text-base font-semibold text-ink transition-colors hover:bg-cream-deep"
+                >
+                  Check my email — free
+                </a>
+              </>
+            ) : (
+              // Pre-approval — the live demo is the top-of-funnel hook.
+              <>
+                <a
+                  href="#try"
+                  className="group inline-flex items-center gap-2 rounded-full bg-coral px-6 py-3 text-base font-semibold text-paper shadow-lift transition-transform hover:-translate-y-0.5 hover:bg-coral-deep"
+                >
+                  Check my email — free
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </a>
+                <a
+                  href="#how"
+                  className="inline-flex items-center gap-2 rounded-full border border-line bg-paper px-6 py-3 text-base font-semibold text-ink transition-colors hover:bg-cream-deep"
+                >
+                  See how it works
+                </a>
+              </>
+            )}
           </div>
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted">

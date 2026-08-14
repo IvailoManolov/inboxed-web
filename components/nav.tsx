@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Mail, UserCircle2 } from "lucide-react";
+import { Mail, UserCircle2, Puzzle } from "lucide-react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import { EXTENSION_URL } from "@/lib/config";
 
 const LINKS = [
   { href: "/#how", label: "How it works" },
@@ -80,12 +81,23 @@ export function Nav() {
                 Sign in
               </a>
             ))}
-          <a
-            href="/#try"
-            className="rounded-full bg-ink px-4 py-2 text-sm font-semibold text-cream transition-transform hover:-translate-y-0.5 hover:bg-ink-soft"
-          >
-            Check an email
-          </a>
+          {EXTENSION_URL ? (
+            <a
+              href={EXTENSION_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-2 text-sm font-semibold text-cream transition-transform hover:-translate-y-0.5 hover:bg-ink-soft"
+            >
+              <Puzzle className="h-4 w-4" /> Add to Chrome
+            </a>
+          ) : (
+            <a
+              href="/#try"
+              className="rounded-full bg-ink px-4 py-2 text-sm font-semibold text-cream transition-transform hover:-translate-y-0.5 hover:bg-ink-soft"
+            >
+              Check an email
+            </a>
+          )}
         </div>
       </nav>
     </header>

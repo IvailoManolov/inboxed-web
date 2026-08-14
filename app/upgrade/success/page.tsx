@@ -3,6 +3,7 @@
 import { Suspense, useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { connectExtension, type HandoffState } from "@/lib/extension";
+import { AddToChrome } from "@/components/add-to-chrome";
 
 function SuccessInner() {
   const params = useSearchParams();
@@ -38,18 +39,21 @@ function SuccessInner() {
         )}
 
         {state === "unavailable" && (
-          <div className="mt-6 rounded-[var(--radius-xl)] border border-amber/30 bg-amber/10 px-4 py-4 text-sm text-ink-soft">
-            <p>We couldn&apos;t reach the extension automatically.</p>
-            <button
-              onClick={handoff}
-              className="mt-3 rounded-full bg-ink px-5 py-2.5 font-semibold text-paper transition-transform hover:-translate-y-0.5"
-            >
-              Sync to extension
-            </button>
-            <p className="mt-3 text-xs text-muted">
-              Make sure the HitSend extension is installed in this browser, then
-              click Sync.
+          <div className="mt-6 rounded-[var(--radius-xl)] border border-amber/30 bg-amber/10 px-4 py-4 text-left text-sm text-ink-soft">
+            <p className="font-medium text-ink">One last step: install the extension</p>
+            <p className="mt-1 text-xs text-muted">
+              We couldn&apos;t reach it in this browser. If you haven&apos;t
+              added HitSend yet, install it — then come back and sync.
             </p>
+            <div className="mt-3 flex flex-col gap-2">
+              <AddToChrome block variant="secondary" label="Add HitSend to Chrome" />
+              <button
+                onClick={handoff}
+                className="rounded-full bg-ink py-2.5 font-semibold text-paper transition-transform hover:-translate-y-0.5"
+              >
+                I&apos;ve installed it — sync now
+              </button>
+            </div>
           </div>
         )}
 
