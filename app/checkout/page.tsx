@@ -41,8 +41,9 @@ const appearance: Appearance = {
 };
 
 /** The right-hand payment form. Lives inside <Elements>, so it can use the
- * Stripe hooks. Confirms the subscription's payment and hands off to the
- * success page (which syncs the token to the extension). */
+ * Stripe hooks. Collects the card (for the trial we confirm a SetupIntent so
+ * nothing is charged today) and hands off to the success page, which syncs the
+ * token to the extension. */
 function PayForm({ extId }: { extId?: string }) {
   const stripe = useStripe();
   const elements = useElements();
@@ -59,7 +60,9 @@ function PayForm({ extId }: { extId?: string }) {
       `${window.location.origin}/upgrade/success` +
       (extId ? `?ext_id=${encodeURIComponent(extId)}` : "");
 
-    const { error } = await stripe.confirmPayment({
+    // Trial: confirm the SetupIntent (saves the card for the day-7 charge)
+    // rather than charging now. Nothing hits the card today.
+    const { error } = await stripe.confirmSetup({
       elements,
       confirmParams: { return_url: returnUrl },
     });
@@ -67,7 +70,7 @@ function PayForm({ extId }: { extId?: string }) {
     // If we get here, confirmation failed (otherwise the browser redirected to
     // return_url). Show the message and let them retry.
     if (error) {
-      setError(error.message ?? "Payment could not be completed. Please try again.");
+      setError(error.message ?? "Could not start your trial. Please try again.");
       setBusy(false);
     }
   }
@@ -89,15 +92,16 @@ function PayForm({ extId }: { extId?: string }) {
       >
         {busy ? (
           <>
-            <Loader2 className="h-4 w-4 animate-spin" /> Processing…
+            <Loader2 className="h-4 w-4 animate-spin" /> Starting your trial…
           </>
         ) : (
-          `Subscribe - ${PRICE_LABEL}`
+          "Start 7-day free trial"
         )}
       </button>
 
       <p className="flex items-center justify-center gap-1.5 text-center text-xs text-muted">
-        <Lock className="h-3.5 w-3.5" /> Secured by Stripe · Cancel anytime
+        <Lock className="h-3.5 w-3.5" /> No charge for 7 days · Cancel anytime ·
+        Secured by Stripe
       </p>
     </form>
   );
@@ -163,11 +167,13 @@ function CheckoutInner() {
           </span>
           <div className="mt-5 flex items-baseline gap-2">
             <span className="font-display text-5xl font-extrabold text-ink">
-              {PRICE_LABEL}
+              Free
             </span>
+            <span className="text-sm text-ink-soft">for 7 days</span>
           </div>
           <p className="mt-2 text-sm text-ink-soft">
-            Billed monthly. Cancel anytime, no questions asked.
+            Then {PRICE_LABEL}. Cancel anytime in the first 7 days and you won&apos;t
+            be charged a cent.
           </p>
 
           <ul className="mt-6 space-y-3">
@@ -191,10 +197,11 @@ function CheckoutInner() {
         {/* Right: payment */}
         <div className="p-8">
           <h1 className="font-display text-xl font-bold text-ink">
-            Payment details
+            Start your free trial
           </h1>
           <p className="mt-1 text-sm text-ink-soft">
-            Complete your subscription to unlock HitSend Pro.
+            No charge for 7 days. We&apos;ll only bill you when the trial ends -
+            cancel before then and you pay nothing.
           </p>
 
           <div className="mt-6">

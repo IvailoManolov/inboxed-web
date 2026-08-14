@@ -185,7 +185,7 @@ function UpgradeInner() {
                 disabled={busy}
                 className="w-full rounded-full bg-coral py-3.5 font-semibold text-paper shadow-lift transition-transform hover:-translate-y-0.5 hover:bg-coral-deep disabled:translate-y-0 disabled:opacity-60"
               >
-                {busy ? "Redirecting to checkout…" : `Go Pro - ${PRICE_LABEL}`}
+                {busy ? "Redirecting…" : "Start 7-day free trial"}
               </button>
             )}
           </div>

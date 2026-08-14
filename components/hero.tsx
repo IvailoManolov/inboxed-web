@@ -60,7 +60,7 @@ export function Hero() {
                   href="#try"
                   className="inline-flex items-center gap-2 rounded-full border border-line bg-paper px-6 py-3 text-base font-semibold text-ink transition-colors hover:bg-cream-deep"
                 >
-                  Check my email - free
+                  Check how it works
                 </a>
               </>
             ) : (
@@ -70,7 +70,7 @@ export function Hero() {
                   href="#try"
                   className="group inline-flex items-center gap-2 rounded-full bg-coral px-6 py-3 text-base font-semibold text-paper shadow-lift transition-transform hover:-translate-y-0.5 hover:bg-coral-deep"
                 >
-                  Check my email - free
+                  Check how it works
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </a>
                 <a
@@ -86,7 +86,7 @@ export function Hero() {
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted">
             <span className="inline-flex items-center gap-1.5">
               <Sparkles className="h-4 w-4 text-coral" /> Free for 7 days - no
-              credit card
+              charge today
             </span>
             <span className="inline-flex items-center gap-1.5">
               <Zap className="h-4 w-4 text-amber" /> Instant, runs as you type

@@ -24,7 +24,7 @@ const TIERS: {
       "Live spam-risk score in Gmail",
       "Every flagged phrase + finding",
       "One-click fixes",
-      "No credit card required",
+      "No charge for 7 days - cancel anytime",
     ],
     cta: "Start 7-day trial",
     href: "/upgrade",
@@ -77,8 +77,8 @@ export function Pricing() {
           One recovered reply pays for a year.
         </h2>
         <p className="mt-4 text-lg leading-relaxed text-ink-soft">
-          Free for 7 days - no card. Keep it for less than one recovered reply a
-          month.
+          Free for 7 days, no charge today. Keep it for less than one recovered
+          reply a month.
         </p>
       </Reveal>
 
@@ -168,26 +168,6 @@ export function Pricing() {
           </Reveal>
         ))}
       </div>
-
-      <Reveal delay={0.15}>
-        <div className="mt-8 flex flex-col items-center justify-between gap-4 rounded-[var(--radius-xl)] border-2 border-dashed border-amber bg-amber/10 p-6 text-center sm:flex-row sm:text-left">
-          <div>
-            <p className="font-display text-lg font-bold text-ink">
-              🚀 Founding deal - first 100 customers
-            </p>
-            <p className="mt-1 text-sm text-ink-soft">
-              Lock in <span className="font-semibold">$99 once</span> for
-              lifetime Pro. When they're gone, they're gone.
-            </p>
-          </div>
-          <a
-            href="/upgrade"
-            className="shrink-0 rounded-full bg-ink px-5 py-3 text-sm font-semibold text-cream transition-transform hover:-translate-y-0.5"
-          >
-            Claim lifetime access
-          </a>
-        </div>
-      </Reveal>
     </section>
   );
 }

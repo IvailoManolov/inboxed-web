@@ -262,6 +262,10 @@ export default function AccountPage() {
                         <span className="inline-flex items-center gap-1 rounded-full bg-danger-soft px-2 py-0.5 text-xs font-semibold text-danger">
                           <AlertTriangle className="h-3 w-3" /> Past due
                         </span>
+                      ) : sub.status === "trialing" ? (
+                        <span className="inline-flex items-center gap-1 rounded-full bg-coral-soft px-2 py-0.5 text-xs font-semibold text-coral-deep">
+                          <CheckCircle2 className="h-3 w-3" /> Free trial
+                        </span>
                       ) : sub.cancelAtPeriodEnd ? (
                         <span className="rounded-full bg-amber/15 px-2 py-0.5 text-xs font-semibold text-amber">
                           Ending soon
@@ -277,7 +281,9 @@ export default function AccountPage() {
                   <p className="mt-2 text-sm text-ink-soft">
                     {sub.cancelAtPeriodEnd
                       ? `Access ends on ${fmtDate(sub.currentPeriodEnd)}.`
-                      : `Renews on ${fmtDate(sub.currentPeriodEnd)}.`}
+                      : sub.status === "trialing"
+                        ? `Free trial - first charge on ${fmtDate(sub.currentPeriodEnd)}.`
+                        : `Renews on ${fmtDate(sub.currentPeriodEnd)}.`}
                   </p>
 
                   {sub.card && (

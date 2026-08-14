@@ -60,25 +60,32 @@ export async function POST() {
     return NextResponse.json({ alreadyPro: true });
   }
 
+  // 7-day free trial: the user gets Pro immediately (status `trialing`), and
+  // nothing is charged today. Because $0 is due now, there's no payment to
+  // confirm - instead Stripe creates a pending SetupIntent to collect the card,
+  // which becomes the subscription's default and is charged when the trial ends.
   const sub = await stripe().subscriptions.create({
     customer: customerId,
     items: [{ price: serverEnv.stripePriceId() }],
+    trial_period_days: 7,
     payment_behavior: "default_incomplete",
     payment_settings: { save_default_payment_method: "on_subscription" },
-    // 2026 API: the invoice's payment client secret is on confirmation_secret,
-    // not the removed `payment_intent` field.
-    expand: ["latest_invoice.confirmation_secret"],
+    // If the trial ends with no card on file, cancel rather than leave it open.
+    trial_settings: { end_behavior: { missing_payment_method: "cancel" } },
+    expand: ["pending_setup_intent"],
     metadata: { supabase_user_id: user.id },
   });
 
-  const invoice = sub.latest_invoice as Stripe.Invoice | null;
-  const clientSecret = invoice?.confirmation_secret?.client_secret ?? null;
+  const setupIntent = sub.pending_setup_intent as Stripe.SetupIntent | null;
+  const clientSecret = setupIntent?.client_secret ?? null;
   if (!clientSecret) {
     return NextResponse.json(
-      { error: "Could not initialize payment" },
+      { error: "Could not start the trial" },
       { status: 500 },
     );
   }
 
-  return NextResponse.json({ clientSecret, subscriptionId: sub.id });
+  // `mode: "setup"` tells the checkout page to confirm a SetupIntent (collect
+  // the card for later) rather than charge a PaymentIntent now.
+  return NextResponse.json({ clientSecret, subscriptionId: sub.id, mode: "setup" });
 }
