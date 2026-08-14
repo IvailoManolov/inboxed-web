@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Mail } from "lucide-react";
+import { Mail, UserCircle2 } from "lucide-react";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 const LINKS = [
   { href: "/#how", label: "How it works" },
@@ -12,12 +13,24 @@ const LINKS = [
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  // null = still checking; avoids flashing the wrong label on load.
+  const [signedIn, setSignedIn] = useState<boolean | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+
+    const supabase = createSupabaseBrowserClient();
+    supabase.auth.getUser().then(({ data }) => setSignedIn(!!data.user));
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) =>
+      setSignedIn(!!session?.user),
+    );
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      sub.subscription.unsubscribe();
+    };
   }, []);
 
   return (
@@ -51,12 +64,22 @@ export function Nav() {
         </div>
 
         <div className="flex items-center gap-4 sm:gap-5">
-          <a
-            href="/account"
-            className="text-sm font-medium text-ink-soft transition-colors hover:text-ink"
-          >
-            Sign in
-          </a>
+          {signedIn !== null &&
+            (signedIn ? (
+              <a
+                href="/account"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft transition-colors hover:text-ink"
+              >
+                <UserCircle2 className="h-4 w-4" /> Account
+              </a>
+            ) : (
+              <a
+                href="/account"
+                className="text-sm font-medium text-ink-soft transition-colors hover:text-ink"
+              >
+                Sign in
+              </a>
+            ))}
           <a
             href="/#try"
             className="rounded-full bg-ink px-4 py-2 text-sm font-semibold text-cream transition-transform hover:-translate-y-0.5 hover:bg-ink-soft"
