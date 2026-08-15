@@ -35,7 +35,7 @@ const TIERS: {
     price: "$9.99",
     original: "$19.99",
     cadence: "/ month",
-    note: "Launch price - until the end of 2026",
+    note: null,
     tagline: "The Gmail sidekick you'll actually keep.",
     features: [
       "Real-time checks inside Gmail",
