@@ -1,22 +1,20 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import type Stripe from "stripe";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { stripe } from "@/lib/stripe";
 import { serverEnv } from "@/lib/config";
 import { proFromSubs } from "@/lib/subscription";
 
-/* Powers the custom (Payment Element) checkout at /checkout. Creates a Stripe
- * subscription in `default_incomplete` state and returns the client secret of
- * the invoice's payment - the browser confirms it with the Payment Element, so
- * the whole checkout lives on our domain (no hosted Stripe page). Stripe stays
- * the source of truth; the customer id is stashed on the auth user's
- * app_metadata, same as the hosted flow. */
+/* Step 2 of the card-first trial checkout. The browser has already confirmed a
+ * SetupIntent (see /api/subscription/setup-intent) and passes the resulting
+ * payment method here. We create the 7-day trial subscription with that card
+ * as its default, so Stripe charges it automatically when the trial ends.
+ *
+ * Card-first ordering is deliberate: no confirmed payment method means no
+ * subscription and no Pro - you cannot start a trial without a card. */
 
 export const runtime = "nodejs";
 
-/** current_period_end lives at the top level in older API versions and on the
- * subscription item in newer ones - read whichever is present. */
 function periodEnd(sub: Stripe.Subscription): number {
   const top = (sub as unknown as { current_period_end?: number }).current_period_end;
   if (typeof top === "number") return top;
@@ -24,26 +22,28 @@ function periodEnd(sub: Stripe.Subscription): number {
   return item?.current_period_end ?? 0;
 }
 
-export async function POST() {
+export async function POST(req: NextRequest) {
   const supabase = await createSupabaseServerClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ error: "Not signed in" }, { status: 401 });
 
-  // Reuse the Stripe customer if we've seen this user before; else create one
-  // and remember it on the auth user (tamper-proof app_metadata).
-  let customerId = user.app_metadata?.stripe_customer_id as string | undefined;
+  const customerId = user.app_metadata?.stripe_customer_id as string | undefined;
   if (!customerId) {
-    const customer = await stripe().customers.create({
-      email: user.email ?? undefined,
-      metadata: { supabase_user_id: user.id },
-    });
-    customerId = customer.id;
-    const admin = createSupabaseAdminClient();
-    await admin.auth.admin.updateUserById(user.id, {
-      app_metadata: { ...user.app_metadata, stripe_customer_id: customerId },
-    });
+    // setup-intent runs first and creates the customer; if it's missing the
+    // client is calling out of order.
+    return NextResponse.json({ error: "No customer on file" }, { status: 400 });
+  }
+
+  const { paymentMethodId } = (await req.json().catch(() => ({}))) as {
+    paymentMethodId?: string;
+  };
+  if (!paymentMethodId) {
+    return NextResponse.json(
+      { error: "A payment method is required to start the trial" },
+      { status: 400 },
+    );
   }
 
   // Guard: never start a second subscription for someone already Pro.
@@ -60,32 +60,22 @@ export async function POST() {
     return NextResponse.json({ alreadyPro: true });
   }
 
-  // 7-day free trial: the user gets Pro immediately (status `trialing`), and
-  // nothing is charged today. Because $0 is due now, there's no payment to
-  // confirm - instead Stripe creates a pending SetupIntent to collect the card,
-  // which becomes the subscription's default and is charged when the trial ends.
+  // Make the confirmed card the customer's default for invoices.
+  await stripe().customers.update(customerId, {
+    invoice_settings: { default_payment_method: paymentMethodId },
+  });
+
+  // Create the trial. With a card on file and a trial, the subscription starts
+  // `trialing` (Pro immediately) and the first charge lands when the trial ends.
   const sub = await stripe().subscriptions.create({
     customer: customerId,
     items: [{ price: serverEnv.stripePriceId() }],
     trial_period_days: 7,
-    payment_behavior: "default_incomplete",
-    payment_settings: { save_default_payment_method: "on_subscription" },
-    // If the trial ends with no card on file, cancel rather than leave it open.
+    default_payment_method: paymentMethodId,
+    // Safety net: if there's ever no card at trial end, cancel instead of hang.
     trial_settings: { end_behavior: { missing_payment_method: "cancel" } },
-    expand: ["pending_setup_intent"],
     metadata: { supabase_user_id: user.id },
   });
 
-  const setupIntent = sub.pending_setup_intent as Stripe.SetupIntent | null;
-  const clientSecret = setupIntent?.client_secret ?? null;
-  if (!clientSecret) {
-    return NextResponse.json(
-      { error: "Could not start the trial" },
-      { status: 500 },
-    );
-  }
-
-  // `mode: "setup"` tells the checkout page to confirm a SetupIntent (collect
-  // the card for later) rather than charge a PaymentIntent now.
-  return NextResponse.json({ clientSecret, subscriptionId: sub.id, mode: "setup" });
+  return NextResponse.json({ ok: true, subscriptionId: sub.id });
 }

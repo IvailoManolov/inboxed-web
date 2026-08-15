@@ -56,23 +56,42 @@ function PayForm({ extId }: { extId?: string }) {
     setBusy(true);
     setError(null);
 
-    const returnUrl =
-      `${window.location.origin}/upgrade/success` +
-      (extId ? `?ext_id=${encodeURIComponent(extId)}` : "");
-
-    // Trial: confirm the SetupIntent (saves the card for the day-7 charge)
-    // rather than charging now. Nothing hits the card today.
-    const { error } = await stripe.confirmSetup({
+    // 1) Confirm the card (SetupIntent). No charge today. `redirect: "if_required"`
+    //    keeps us on-page for cards so we can create the subscription next.
+    const { error: confirmErr, setupIntent } = await stripe.confirmSetup({
       elements,
-      confirmParams: { return_url: returnUrl },
+      redirect: "if_required",
     });
-
-    // If we get here, confirmation failed (otherwise the browser redirected to
-    // return_url). Show the message and let them retry.
-    if (error) {
-      setError(error.message ?? "Could not start your trial. Please try again.");
+    if (confirmErr) {
+      setError(confirmErr.message ?? "We couldn't save your card. Please try again.");
       setBusy(false);
+      return;
     }
+
+    const pm = setupIntent?.payment_method;
+    const paymentMethodId = typeof pm === "string" ? pm : pm?.id;
+    if (!paymentMethodId) {
+      setError("We couldn't read your card. Please try again.");
+      setBusy(false);
+      return;
+    }
+
+    // 2) Card is confirmed - now create the 7-day trial subscription with it.
+    const res = await fetch("/api/subscription", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ paymentMethodId }),
+    });
+    if (!res.ok) {
+      const j = (await res.json().catch(() => ({}))) as { error?: string };
+      setError(j.error ?? "We couldn't start your trial. Please try again.");
+      setBusy(false);
+      return;
+    }
+
+    // 3) Off to the success page (it hands the token to the extension).
+    window.location.href =
+      `/upgrade/success` + (extId ? `?ext_id=${encodeURIComponent(extId)}` : "");
   }
 
   return (
@@ -118,7 +137,8 @@ function CheckoutInner() {
 
   useEffect(() => {
     let alive = true;
-    fetch("/api/subscription", { method: "POST" })
+    // Card-first: create only a SetupIntent now (no subscription yet).
+    fetch("/api/subscription/setup-intent", { method: "POST" })
       .then(async (res) => {
         if (!alive) return;
         if (res.status === 401) {
