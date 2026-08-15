@@ -74,7 +74,16 @@ export default function TermsPage() {
       </P>
 
       <H2>Contact</H2>
-      <P>Questions about these terms? Email hello@hitsend.app.</P>
+      <P>
+        Questions about these terms? Reach us through our{" "}
+        <a
+          href="/contact"
+          className="font-medium text-coral underline underline-offset-2 hover:text-coral-deep"
+        >
+          contact page
+        </a>
+        .
+      </P>
     </LegalShell>
   );
 }

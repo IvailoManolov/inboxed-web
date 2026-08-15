@@ -17,8 +17,15 @@ export default function PrivacyPage() {
       <H2>Who we are</H2>
       <P>
         HitSend (“we”, “us”) provides a spam-risk checker for email, available as
-        a web tool and a browser extension at hitsend.app. For any privacy
-        question, contact us at hello@hitsend.app.
+        a web tool and a browser extension at hitsend.vercel.app. For any privacy
+        question, reach us through our{" "}
+        <a
+          href="/contact"
+          className="font-medium text-coral underline underline-offset-2 hover:text-coral-deep"
+        >
+          contact page
+        </a>
+        .
       </P>
 
       <H2>What we collect</H2>
@@ -89,7 +96,14 @@ export default function PrivacyPage() {
       <P>
         Depending on where you live (e.g. under GDPR or CCPA), you may have the
         right to access, correct, export, or delete your data, and to object to
-        certain processing. To exercise any of these, email hello@hitsend.app.
+        certain processing. To exercise any of these, reach us through our{" "}
+        <a
+          href="/contact"
+          className="font-medium text-coral underline underline-offset-2 hover:text-coral-deep"
+        >
+          contact page
+        </a>
+        .
       </P>
 
       <H2>Security</H2>
@@ -107,7 +121,16 @@ export default function PrivacyPage() {
       </P>
 
       <H2>Contact</H2>
-      <P>Questions? Email hello@hitsend.app and we’ll help.</P>
+      <P>
+        Questions? Reach us through our{" "}
+        <a
+          href="/contact"
+          className="font-medium text-coral underline underline-offset-2 hover:text-coral-deep"
+        >
+          contact page
+        </a>{" "}
+        and we’ll help.
+      </P>
     </LegalShell>
   );
 }

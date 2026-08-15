@@ -112,8 +112,14 @@ export default function DataSecurityPage() {
 
               <div className="mt-12 rounded-[var(--radius-xl)] border border-line bg-cream-deep/40 p-6">
                 <p className="text-base leading-relaxed text-ink-soft">
-                  Have a security question, or want to report something? Email{" "}
-                  <span className="font-semibold text-ink">hello@hitsend.app</span>{" "}
+                  Have a security question, or want to report something? Reach us
+                  through our{" "}
+                  <a
+                    href="/contact"
+                    className="font-semibold text-coral underline underline-offset-2 hover:text-coral-deep"
+                  >
+                    contact page
+                  </a>{" "}
                   - a real person will answer.
                 </p>
               </div>

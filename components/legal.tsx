@@ -4,8 +4,8 @@ import { Nav } from "./nav";
 import { Footer } from "./footer";
 
 /* Shared shell for Privacy / Terms / Data & Security.
-   NOTE: placeholder entity (HitSend), domain (hitsend.app) and contact
-   (hello@hitsend.app) - replace with real details + legal review before launch. */
+   Contact routes to the /contact form; product domain is hitsend.vercel.app.
+   Swap in a dedicated support email + formal legal review before scaling. */
 
 export function LegalShell({
   title,

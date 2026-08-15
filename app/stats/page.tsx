@@ -220,8 +220,14 @@ export default function StatsPage() {
             </div>
             <p className="mt-6 text-sm leading-relaxed text-muted">
               HitSend isn’t affiliated with any of these organizations. Spot a
-              figure you think is off? Tell us at hello@hitsend.app and we’ll
-              correct it.
+              figure you think is off? Tell us through our{" "}
+              <a
+                href="/contact"
+                className="font-medium text-coral underline underline-offset-2 hover:text-coral-deep"
+              >
+                contact page
+              </a>{" "}
+              and we’ll correct it.
             </p>
           </Reveal>
 
