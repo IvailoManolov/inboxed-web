@@ -5,7 +5,6 @@ import { HowItWorks } from "@/components/how-it-works";
 import { ScoreGuide } from "@/components/score-guide";
 import { FlagDemo } from "@/components/flag-demo";
 import { LiveDemo } from "@/components/live-demo";
-import { FounderStory } from "@/components/founder-story";
 import { Pricing } from "@/components/pricing";
 import { Footer } from "@/components/footer";
 
@@ -20,7 +19,6 @@ export default function Home() {
         <ScoreGuide />
         <FlagDemo />
         <LiveDemo />
-        <FounderStory />
         <Pricing />
       </main>
       <Footer />
