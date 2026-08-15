@@ -96,6 +96,13 @@ function PayForm({ extId }: { extId?: string }) {
 
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-5">
+      <div className="flex items-center justify-between rounded-[var(--radius-xl)] border border-line bg-cream/60 px-3.5 py-2.5">
+        <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+          <ShieldCheck className="h-4 w-4 text-green" /> Protected by Stripe
+        </span>
+        <span className="text-[11px] text-muted">We never see your card</span>
+      </div>
+
       <PaymentElement options={{ layout: "tabs" }} />
 
       {error && (
@@ -119,8 +126,7 @@ function PayForm({ extId }: { extId?: string }) {
       </button>
 
       <p className="flex items-center justify-center gap-1.5 text-center text-xs text-muted">
-        <Lock className="h-3.5 w-3.5" /> No charge for 7 days · Cancel anytime ·
-        Secured by Stripe
+        <Lock className="h-3.5 w-3.5" /> No charge for 7 days · Cancel anytime
       </p>
     </form>
   );
