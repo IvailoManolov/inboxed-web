@@ -1,4 +1,4 @@
-# HitSend backend — setup & end-to-end test
+# HitSend backend - setup & end-to-end test
 
 Everything is coded against env placeholders. Follow these steps to wire real
 test-mode keys and run the full flow locally. ~15 minutes.
@@ -10,17 +10,17 @@ webhook, no cron.**
 ## 1. Supabase (Google login only)
 
 1. Create a free project at [supabase.com](https://supabase.com).
-2. **Project Settings → API** — copy three values:
+2. **Project Settings → API** - copy three values:
    - Project URL → `NEXT_PUBLIC_SUPABASE_URL` (web) + `VITE_SUPABASE_URL` (extension)
    - `anon` `public` key → `NEXT_PUBLIC_SUPABASE_ANON_KEY` (web) + `VITE_SUPABASE_ANON_KEY` (extension)
-   - `service_role` `secret` key → `SUPABASE_SERVICE_ROLE_KEY` (web only — never ship this)
+   - `service_role` `secret` key → `SUPABASE_SERVICE_ROLE_KEY` (web only - never ship this)
 3. **Authentication → URL Configuration**:
    - Site URL: `http://localhost:3000` (swap for your domain in prod)
    - Redirect URLs: add `http://localhost:3000/auth/callback`
 4. **Authentication → Providers → Google** → enable. You'll paste the Client ID
    + Secret here after the next step. Copy the **callback URL** shown here.
 
-   *(No SQL to run — there's no table. Pro status lives in Stripe.)*
+   *(No SQL to run - there's no table. Pro status lives in Stripe.)*
 
 ## 2. Google OAuth (for "Sign in with Google")
 
@@ -28,7 +28,7 @@ webhook, no cron.**
 2. **APIs & Services → OAuth consent screen** → External → app name + your email;
    add yourself under Test users.
 3. **Credentials → Create credentials → OAuth client ID → Web application**.
-4. **Authorized redirect URI**: the callback URL from Supabase step 4 — it looks
+4. **Authorized redirect URI**: the callback URL from Supabase step 4 - it looks
    like `https://<project>.supabase.co/auth/v1/callback`.
 5. Copy the **Client ID + Client Secret** → paste into Supabase's Google provider.
 
@@ -39,12 +39,12 @@ webhook, no cron.**
 3. **Products → Add product** → "HitSend Pro", recurring **$9/mo** → copy the
    **Price ID** (`price_…`) → `STRIPE_PRICE_ID`.
 
-   *(No webhook to register — entitlement is read live from Stripe.)*
+   *(No webhook to register - entitlement is read live from Stripe.)*
 
 ## 4. Fill env files
 
-- `inboxed-web/.env.local` — copy from `.env.local.example`, fill everything.
-- `inboxed-extension/.env` — copy from `.env.example`: `VITE_WEB_URL=http://localhost:3000`
+- `inboxed-web/.env.local` - copy from `.env.local.example`, fill everything.
+- `inboxed-extension/.env` - copy from `.env.example`: `VITE_WEB_URL=http://localhost:3000`
   plus the Supabase URL + anon key.
 
 ## 5. Run the end-to-end test
@@ -53,14 +53,14 @@ webhook, no cron.**
 2. **Extension:** `cd inboxed-extension && npm run build`, then load `dist/` unpacked
    at `chrome://extensions`. (`externally_connectable` + host permissions already
    include `localhost:3000`; the web page learns the extension id from the `?ext_id`
-   the extension appends when it opens the tab — nothing to configure.)
+   the extension appends when it opens the tab - nothing to configure.)
 3. In Gmail: exhaust the free daily check (or click **Unlock**) → the extension opens
    `localhost:3000/upgrade?ext_id=…` → **Sign in with Google** → **Go Pro** →
    pay with Stripe test card `4242 4242 4242 4242`, any future expiry + any CVC →
    the success page hands the token back → return to Gmail → **panel unlocks, no reload**.
 4. **Cancel test:** in the Stripe dashboard (test mode) cancel the subscription, or use
    `/account → Manage subscription`. Within ~5 minutes (the extension's cache window)
-   the panel re-locks — no job, no manual step.
+   the panel re-locks - no job, no manual step.
 
 ## How it fits together
 
@@ -80,4 +80,4 @@ click Upgrade  ───ext_id──▶  /upgrade
 
 Secrets (`service_role`, Stripe secret) live **only** in the web server env. The
 extension holds only the user's own Supabase token. No email content, and no
-subscription data, is ever stored by us — Stripe holds it.
+subscription data, is ever stored by us - Stripe holds it.

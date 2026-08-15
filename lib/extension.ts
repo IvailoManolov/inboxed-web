@@ -36,7 +36,7 @@ export async function connectExtension(
     refreshToken: session.refresh_token,
     expiresAt: session.expires_at ? session.expires_at * 1000 : undefined,
   });
-  // Ignore lastError — the message may still have been delivered.
+  // Ignore lastError - the message may still have been delivered.
   return "sent";
 }
 

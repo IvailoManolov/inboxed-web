@@ -2,7 +2,7 @@ import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { SUPABASE_URL, SUPABASE_ANON_KEY } from "@/lib/config";
 
-/** Supabase client bound to the request's cookies — used in server components
+/** Supabase client bound to the request's cookies - used in server components
  * and route handlers to read the signed-in user and persist the session. */
 export async function createSupabaseServerClient() {
   const cookieStore = await cookies();

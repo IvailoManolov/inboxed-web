@@ -1,10 +1,10 @@
-# HitSend — follow-ups before / at launch
+# HitSend - follow-ups before / at launch
 
-Running list of things deferred during setup. Not secrets — safe to commit.
+Running list of things deferred during setup. Not secrets - safe to commit.
 
 ## Switch from localhost to the production domain
 
-When a real domain is bought (placeholder below: `inboxed.app` — confirm the
+When a real domain is bought (placeholder below: `inboxed.app` - confirm the
 final choice first), swap the dev URLs for production. **Add, don't replace**,
 where noted so local dev keeps working.
 
@@ -24,14 +24,14 @@ where noted so local dev keeps working.
   `https://inboxed.app/*`. If the final domain differs, swap it here.
 
 **Does NOT change:** the Google callback URL
-`https://zobfhdojiheiwfuwxpjy.supabase.co/auth/v1/callback` — Google always
+`https://zobfhdojiheiwfuwxpjy.supabase.co/auth/v1/callback` - Google always
 talks to Supabase, which then bounces the user to whatever Site URL is active.
 
 ## Switch Stripe from test to live (at launch)
 
 Built and tested against **test mode** keys. Before real customers can pay:
 
-- [ ] Fully activate the Stripe account (business details + bank for payouts) —
+- [ ] Fully activate the Stripe account (business details + bank for payouts) -
   required before live keys work.
 - [ ] Recreate the "HitSend Pro" product/price in **live mode** → new `price_…`.
 - [ ] Swap the two env vars (in Vercel, prod): `STRIPE_SECRET_KEY=sk_live_…`
@@ -42,7 +42,7 @@ Built and tested against **test mode** keys. Before real customers can pay:
 
 The token handoff to the extension currently happens **only** on the checkout
 success page. So a user who pays on the web and installs the extension later
-(or reinstalls) is Pro in Stripe but sees the paywall — and "Upgrade" sends them
+(or reinstalls) is Pro in Stripe but sees the paywall - and "Upgrade" sends them
 to checkout again (double-charge risk).
 
 - [ ] On `/upgrade`, if the signed-in user is already Pro, show **"Connect

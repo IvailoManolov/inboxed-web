@@ -39,7 +39,7 @@ export async function proxy(request: NextRequest) {
 export const config = {
   matcher: [
     /*
-     * Run on every path except static assets — including API routes, so
+     * Run on every path except static assets - including API routes, so
      * their cookies get refreshed too. Skips:
      * - _next/static, _next/image (build output & optimized images)
      * - favicon.ico and common image files

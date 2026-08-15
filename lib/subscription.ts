@@ -1,5 +1,5 @@
 /* Pure entitlement logic, derived straight from Stripe subscriptions. Stripe is
- * the source of truth — there is no local subscriptions table. The route handler
+ * the source of truth - there is no local subscriptions table. The route handler
  * does the Stripe I/O and calls in here so the decision stays unit-testable. */
 
 /** The minimal slice of a Stripe subscription we need to decide access. */

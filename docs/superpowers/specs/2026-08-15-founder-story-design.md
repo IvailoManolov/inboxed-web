@@ -1,4 +1,4 @@
-# Founder Story Section + Brand-Leak Fix — Design
+# Founder Story Section + Brand-Leak Fix - Design
 
 **Date:** 2026-08-15
 **Status:** Approved (locked)
@@ -8,7 +8,7 @@
 Add a human, empathic **founder-story section** to the HitSend landing page to
 build credibility for a new product, and remove the leftover `clashy.net` brand
 leak from the spammy demo so that domain appears only in its intended (positive)
-place — the founder story.
+place - the founder story.
 
 ## Context
 
@@ -34,7 +34,7 @@ Two changes, both presentational, no API/data:
 
 ## 1. FounderStory component
 
-**File:** `components/founder-story.tsx` (new, `"use client"` — uses motion +
+**File:** `components/founder-story.tsx` (new, `"use client"` - uses motion +
 scroll trigger).
 
 **Layout:** two columns on desktop (copy left, chart right), stacked on mobile.
@@ -48,12 +48,12 @@ tab):**
 - Eyebrow: `From the founder`
 - Headline: `I built this because my own emails kept vanishing.`
 - Paragraphs:
-  1. "A while back I started my first company, [Clashy](https://clashy.net). I did what everyone says to do — I cold emailed. A lot. And I got… nothing. No replies, no bounces, no clue why. My emails weren't being ignored. They were never being seen — quietly sent to spam."
-  2. "I almost quit. Instead I changed one thing: I stopped guessing and started learning what actually trips Gmail's filters — the words, the links, the rules Google publishes but nobody reads. I built a little tool to check my drafts before I hit send."
-  3. "That one change moved everything. Clashy went from a handful of signups to over a thousand. Same product, same me — the emails just finally started landing."
-  4. "I'm still building, honestly. HitSend is that tool, cleaned up so you don't have to learn this the hard way like I did. If your emails feel like they're disappearing into a void — they probably are. Let's fix that."
+  1. "A while back I started my first company, [Clashy](https://clashy.net). I did what everyone says to do - I cold emailed. A lot. And I got… nothing. No replies, no bounces, no clue why. My emails weren't being ignored. They were never being seen - quietly sent to spam."
+  2. "I almost quit. Instead I changed one thing: I stopped guessing and started learning what actually trips Gmail's filters - the words, the links, the rules Google publishes but nobody reads. I built a little tool to check my drafts before I hit send."
+  3. "That one change moved everything. Clashy went from a handful of signups to over a thousand. Same product, same me - the emails just finally started landing."
+  4. "I'm still building, honestly. HitSend is that tool, cleaned up so you don't have to learn this the hard way like I did. If your emails feel like they're disappearing into a void - they probably are. Let's fix that."
 - Signature row: a small circular avatar with initial **"I"** (coral-soft bg,
-  matching the account page avatar), then `Ivo — founder · ` + `clashy.net` link.
+  matching the account page avatar), then `Ivo - founder · ` + `clashy.net` link.
 
 **Honest-framing rule:** the growth claim is Ivo's real Clashy trajectory,
 anchored only to the two endpoints he stands behind ("a handful" → "1,000+").
@@ -78,9 +78,9 @@ crisp overlays for labels), rendered inside `founder-story.tsx` as a local
   inflection segment muted/flat.
 - **Animation:** on scroll into view (`useInView`, `once: true`), the line path
   draws via `pathLength` 0→1, the area fades in, and the axis/inflection labels
-  fade after the draw — mirroring the motion patterns already used in
+  fade after the draw - mirroring the motion patterns already used in
   `flag-demo.tsx` and `hero.tsx`.
-- **Caption (below chart):** `My own signups — before and after I started
+- **Caption (below chart):** `My own signups - before and after I started
   respecting the rules. Same product, same me.`
 
 ## 2. Brand-leak fix (`components/flag-demo.tsx`)

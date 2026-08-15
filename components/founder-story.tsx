@@ -149,25 +149,25 @@ export function FounderStory() {
               >
                 Clashy
               </a>
-              . I did what everyone says to do — I cold emailed. A lot. And I got…
+              . I did what everyone says to do - I cold emailed. A lot. And I got…
               nothing. No replies, no bounces, no clue why. My emails weren&apos;t
-              being ignored. They were never being seen — quietly sent to spam.
+              being ignored. They were never being seen - quietly sent to spam.
             </p>
             <p>
               I almost quit. Instead I changed one thing: I stopped guessing and
-              started learning what actually trips Gmail&apos;s filters — the
+              started learning what actually trips Gmail&apos;s filters - the
               words, the links, the rules Google publishes but nobody reads. I
               built a little tool to check my drafts before I hit send.
             </p>
             <p>
               That one change moved everything. Clashy went from a handful of
-              signups to over a thousand. Same product, same me — the emails just
+              signups to over a thousand. Same product, same me - the emails just
               finally started landing.
             </p>
             <p>
               I&apos;m still building, honestly. HitSend is that tool, cleaned up
               so you don&apos;t have to learn this the hard way like I did. If your
-              emails feel like they&apos;re disappearing into a void — they
+              emails feel like they&apos;re disappearing into a void - they
               probably are. Let&apos;s fix that.
             </p>
           </div>
@@ -176,7 +176,7 @@ export function FounderStory() {
               I
             </span>
             <p className="text-sm text-ink-soft">
-              <span className="font-semibold text-ink">Ivo</span> — founder ·{" "}
+              <span className="font-semibold text-ink">Ivo</span> - founder ·{" "}
               <a
                 href="https://clashy.net"
                 target="_blank"
@@ -193,7 +193,7 @@ export function FounderStory() {
           <figure className="rounded-[var(--radius-2xl)] border border-line bg-paper p-6 shadow-lift">
             <JourneyChart />
             <figcaption className="mt-4 text-center text-sm text-ink-soft">
-              My own signups — before and after I started respecting the rules.
+              My own signups - before and after I started respecting the rules.
               Same product, same me.
             </figcaption>
           </figure>
